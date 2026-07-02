@@ -78,8 +78,6 @@ class _MyAppState extends State<MyApp> {
         return darkTheme;
       case ThemeOptions.amoled:
         return amoledTheme;
-      default:
-        return theme;
     }
   }
 
