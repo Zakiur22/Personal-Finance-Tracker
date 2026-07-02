@@ -8,23 +8,23 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class TransactionBottomSheet extends StatefulWidget {
-  final Transaction transaction;
+  final Transaction? transaction;
 
   const TransactionBottomSheet({
-    Key key,
+    super.key,
     this.transaction,
-  }) : super(key: key);
+  });
 
   @override
   _TransactionBottomSheetState createState() => _TransactionBottomSheetState();
 }
 
 class _TransactionBottomSheetState extends State<TransactionBottomSheet> {
-  String id;
-  double amount;
-  String description;
-  DateTime timestamp;
-  Category selectedCategory;
+  late String id;
+  late double amount;
+  late String description;
+  late DateTime timestamp;
+  Category? selectedCategory;
 
   var _descriptionNode = FocusNode();
   var _amountNode = FocusNode();
@@ -37,7 +37,7 @@ class _TransactionBottomSheetState extends State<TransactionBottomSheet> {
 
   setIsExpense(bool value) => setState(() => isExpense = value);
   bool get isKeyboardOpen => MediaQuery.of(context).viewInsets.bottom > 0;
-  bool isNumeric(String s) => (s == null) ? false : double.tryParse(s) != null;
+  bool isNumeric(String s) => double.tryParse(s) != null;
 
   @override
   void initState() {
@@ -46,15 +46,21 @@ class _TransactionBottomSheetState extends State<TransactionBottomSheet> {
     setDate(date);
 
     if (widget.transaction != null) {
-      id = widget.transaction.id;
-      amount = widget.transaction.amount;
+      id = widget.transaction!.id;
+      amount = widget.transaction!.amount;
       _amountController.text = amount.abs().toStringAsFixed(0);
-      timestamp = widget.transaction.timestamp;
+      timestamp = widget.transaction!.timestamp;
       setDate(timestamp);
-      description = widget.transaction.description;
+      description = widget.transaction!.description;
       _descriptionController.text = description;
-      selectedCategory = widget.transaction.category;
-      isExpense = selectedCategory.type == 'expense';
+      selectedCategory = widget.transaction!.category;
+      isExpense = selectedCategory!.type == 'expense';
+    } else {
+      id = '';
+      amount = 0.0;
+      description = '';
+      timestamp = date;
+      selectedCategory = null;
     }
   }
 
@@ -110,7 +116,7 @@ class _TransactionBottomSheetState extends State<TransactionBottomSheet> {
                   decimal: true,
                   signed: false,
                 ),
-                onChanged: (v) => setState(() => amount = double.parse(v)),
+                onChanged: (v) => setState(() => amount = double.tryParse(v) ?? 0.0),
                 decoration: InputDecoration(
                   prefixIcon: Icon(
                     isExpense ? Icons.remove : Icons.add,
@@ -162,10 +168,10 @@ class _TransactionBottomSheetState extends State<TransactionBottomSheet> {
 
     Transaction transaction = Transaction(
       id: id,
-      amount: amount * (selectedCategory.type == 'expense' ? -1 : 1),
+      amount: amount * (selectedCategory!.type == 'expense' ? -1 : 1),
       description: description,
       timestamp: timestamp,
-      category: selectedCategory,
+      category: selectedCategory!,
     );
 
     if (widget.transaction != null) {
@@ -187,29 +193,29 @@ class _TransactionBottomSheetState extends State<TransactionBottomSheet> {
         return Row(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            (selectedCategory != null)
-                ? Row(
-                    children: <Widget>[
-                      Container(
-                        width: 80,
-                        height: 80,
-                        child: CategorySelector(
-                          isSelected: false,
-                          category: selectedCategory,
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border(
-                            right: BorderSide(
-                              width: 1,
-                              color: Colors.grey.withValues(alpha: 0.5),
-                            ),
-                          ),
+            if (selectedCategory != null)
+              Row(
+                children: <Widget>[
+                  Container(
+                    width: 80,
+                    height: 80,
+                    child: CategorySelector(
+                      isSelected: false,
+                      category: selectedCategory!,
+                      onPressed: () {},
+                    ),
+                    decoration: BoxDecoration(
+                      border: Border(
+                        right: BorderSide(
+                          width: 1,
+                          color: Colors.grey.withValues(alpha: 0.5),
                         ),
                       ),
-                      SizedBox(width: 10),
-                    ],
-                  )
-                : Container(),
+                    ),
+                  ),
+                  SizedBox(width: 10),
+                ],
+              ),
             Expanded(
               child: Container(
                 width: double.infinity,
@@ -224,7 +230,7 @@ class _TransactionBottomSheetState extends State<TransactionBottomSheet> {
                     var x = categories[index];
                     return CategorySelector(
                       category: x,
-                      isSelected: x.name == selectedCategory?.name,
+                      isSelected: selectedCategory != null && x.name == selectedCategory!.name,
                       onPressed: () => setState(() => selectedCategory = x),
                     );
                   },
