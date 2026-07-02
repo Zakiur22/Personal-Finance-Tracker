@@ -99,9 +99,10 @@ class ThriftyDrawer extends StatelessWidget {
                 ListTile(
                   onTap: () async {
                     Navigator.pop(context);
-                    var playStoreUrl =
-                        'https://play.google.com/store/apps/details?id=today.bethrifty.app';
-                    if (await canLaunch(playStoreUrl)) launch(playStoreUrl);
+                    final Uri playStoreUri = Uri.parse('https://play.google.com/store/apps/details?id=today.bethrifty.app');
+                    if (await canLaunchUrl(playStoreUri)) {
+                      await launchUrl(playStoreUri);
+                    }
                   },
                   leading: Icon(Icons.rate_review),
                   title: Text(S.of(context).thriftyDrawerTextRate),
@@ -117,14 +118,14 @@ class ThriftyDrawer extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
-            child: FutureBuilder(
+            child: FutureBuilder<String>(
               initialData: '',
               future: getVersionCode(),
               builder: (context, snapshot) {
                 return Text(
-                  snapshot.data,
+                  snapshot.data ?? '',
                   textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.caption,
+                  style: Theme.of(context).textTheme.bodySmall,
                 );
               },
             ),
@@ -163,7 +164,7 @@ class DrawerHeader extends StatelessWidget {
           children: <Widget>[
             SizedBox(height: 45),
             Text(
-              user?.name ?? '',
+              user.name,
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.white,
@@ -172,7 +173,7 @@ class DrawerHeader extends StatelessWidget {
             ),
             SizedBox(height: 5),
             Text(
-              user?.email ?? '',
+              user.email,
               style: TextStyle(
                 fontSize: 12,
                 color: Colors.white,
