@@ -6,8 +6,8 @@ import 'package:provider/provider.dart';
 
 class CurrencySelectionDialog extends StatelessWidget {
   const CurrencySelectionDialog({
-    Key key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

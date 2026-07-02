@@ -6,7 +6,7 @@ import 'package:sqflite/sqflite.dart';
 
 class CategoryProvider extends ChangeNotifier {
   List<Category> categories = [];
-  Future<Database> database;
+  late Future<Database> database;
 
   CategoryProvider() {
     this.initializeDB();

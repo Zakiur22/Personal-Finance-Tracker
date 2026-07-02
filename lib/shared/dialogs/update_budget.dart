@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class UpdateBudgetDialog extends StatefulWidget {
-  final double initialValue;
+  final double? initialValue;
 
   const UpdateBudgetDialog({
-    Key key,
+    Key? key,
     this.initialValue,
   }) : super(key: key);
 
@@ -23,7 +23,7 @@ class _UpdateBudgetDialogState extends State<UpdateBudgetDialog> {
   void initState() {
     super.initState();
     if (widget.initialValue != null) {
-      _budgetController.text = widget.initialValue.toStringAsFixed(0);
+      _budgetController.text = widget.initialValue?.toStringAsFixed(0) ?? "0";
     }
   }
 
@@ -61,19 +61,19 @@ class _UpdateBudgetDialogState extends State<UpdateBudgetDialog> {
             Wrap(
               alignment: WrapAlignment.center,
               children: <Widget>[
-                FlatButton.icon(
+                TextButton.icon(
                   onPressed: () {
-                    UserDatabaseService(user).updateUserBudget(null);
+                    UserDatabaseService(user).updateUserBudget(0.0);
                     Navigator.pop(context);
                   },
-                  textColor: Colors.red,
+                  style: TextButton.styleFrom(foregroundColor: Colors.red),
                   icon: Icon(Icons.clear),
                   label: Text(
                     S.of(context).updateBudgetBottomSheetButtonTextClear,
                   ),
                 ),
-                FlatButton.icon(
-                  textColor: Theme.of(context).colorScheme.secondary,
+                TextButton.icon(
+                  style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.secondary),
                   onPressed: () {
                     if (_budgetController.text.isEmpty) return;
                     UserDatabaseService(user).updateUserBudget(

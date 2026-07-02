@@ -15,7 +15,7 @@ class AddCategoryDialog extends StatefulWidget {
 }
 
 class _AddCategoryDialogState extends State<AddCategoryDialog> {
-  String _selectedIcon;
+  String? _selectedIcon;
   TextEditingController _nameController = TextEditingController();
 
   final List<String> icons = [
@@ -106,7 +106,9 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
                             ),
                           ),
                           child: CategoryIcon(
-                            icon: _selectedIcon,
+                            icon: _selectedIcon!,
+                            onTap: () {},
+                            isSelected: false,
                           ),
                         ),
                         SizedBox(width: 10),
@@ -146,29 +148,30 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
           Wrap(
             alignment: WrapAlignment.center,
             children: <Widget>[
-              FlatButton.icon(
+              TextButton.icon(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                textColor: Colors.red[600],
+                style: TextButton.styleFrom(foregroundColor: Colors.red[600]),
                 icon: Icon(Icons.clear),
                 label: Text(
                   S.of(context).addCategoryBottomSheetButtonTextCancel,
                 ),
               ),
-              FlatButton.icon(
+              TextButton.icon(
                 onPressed: () {
                   if (_nameController.text.isEmpty || _selectedIcon == null)
                     return;
                   categoryProvider.insert(Category(
                     id: 'custom_${UniqueKey().toString()}',
-                    icon: _selectedIcon,
+                    icon: _selectedIcon!,
                     name: _nameController.text,
                     type: widget.type,
                   ));
                   Navigator.pop(context);
                 },
-                textColor: Theme.of(context).colorScheme.secondary,
+                style: TextButton.styleFrom(
+                    foregroundColor: Theme.of(context).colorScheme.secondary),
                 icon: Icon(Icons.check),
                 label: Text(
                   S.of(context).addCategoryBottomSheetButtonTextAdd,
@@ -183,16 +186,16 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
 }
 
 class CategoryIcon extends StatelessWidget {
-  final Function onTap;
+  final VoidCallback onTap;
   final bool isSelected;
   final String icon;
 
   const CategoryIcon({
-    Key key,
-    this.onTap,
+    super.key,
+    required this.onTap,
     this.isSelected = false,
-    this.icon,
-  }) : super(key: key);
+    required this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -6,7 +6,7 @@ import 'package:sqflite/sqflite.dart';
 
 class CurrencyProvider extends ChangeNotifier {
   List<Currency> currencies = [];
-  Future<Database> database;
+  late Future<Database> database;
 
   CurrencyProvider() {
     this.initializeDB();

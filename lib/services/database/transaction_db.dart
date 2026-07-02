@@ -5,13 +5,13 @@ import 'package:intl/intl.dart';
 
 class TransactionDatabaseService {
   final User user;
-  static Firestore _db = Firestore.instance;
-  CollectionReference _transactionCollection;
+  static FirebaseFirestore _db = FirebaseFirestore.instance;
+  late CollectionReference _transactionCollection;
 
   TransactionDatabaseService(this.user) {
     _transactionCollection = _db
         .collection('users')
-        .document(this.user?.uid)
+        .doc(this.user.uid)
         .collection('transactions');
   }
 
@@ -19,14 +19,14 @@ class TransactionDatabaseService {
           .orderBy('timestamp', descending: true)
           .snapshots()
           .map((x) {
-        return x.documents.map((y) {
-          return Transaction.fromJson(y.data);
+        return x.docs.map((y) {
+          return Transaction.fromJson(y.data() as Map<String, dynamic>);
         }).toList();
       });
 
   Stream<double> get balance => _transactionCollection.snapshots().map((x) {
-        var transactions = x.documents.map((y) {
-          return Transaction.fromJson(y.data);
+        var transactions = x.docs.map((y) {
+          return Transaction.fromJson(y.data() as Map<String, dynamic>);
         }).toList();
 
         return transactions.fold(
@@ -34,8 +34,8 @@ class TransactionDatabaseService {
       });
 
   Stream<List<Transaction>> expensesByMonth(DateTime date) {
-    var firstDay = new DateTime(date.year, date.month, 1);
-    var lastDay = new DateTime(date.year, date.month + 1, 0);
+    var firstDay = DateTime(date.year, date.month, 1);
+    var lastDay = DateTime(date.year, date.month + 1, 0);
 
     return _transactionCollection
         .where('category.type', isEqualTo: 'expense')
@@ -43,25 +43,25 @@ class TransactionDatabaseService {
         .where('timestamp', isLessThanOrEqualTo: lastDay)
         .snapshots()
         .map((x) {
-      return x.documents.map((y) {
-        return Transaction.fromJson(y.data);
+      return x.docs.map((y) {
+        return Transaction.fromJson(y.data() as Map<String, dynamic>);
       }).toList();
     });
   }
 
   addTransaction(Transaction transaction) async {
     var doc = await _transactionCollection.add(transaction.toJson());
-    return doc.updateData({'id': doc.documentID});
+    return doc.update({'id': doc.id});
   }
 
   updateTransaction(Transaction transaction) {
     return _transactionCollection
-        .document(transaction.id)
-        .updateData(transaction.toJson());
+        .doc(transaction.id)
+        .update(transaction.toJson());
   }
 
   deleteTransaction(Transaction transaction) async {
-    await _transactionCollection.document(transaction.id).delete();
+    await _transactionCollection.doc(transaction.id).delete();
   }
 
   Map<String, List<Transaction>> groupTransactionsByDate(

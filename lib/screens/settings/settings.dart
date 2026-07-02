@@ -29,6 +29,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return MultiProvider(
       providers: [
         StreamProvider<User>.value(
+          initialData: user,
           value: UserDatabaseService(user).userDocument,
         ),
       ],
@@ -127,7 +128,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
       ),
       trailing: Text(
-        '${user?.currency?.symbol} (${user?.currency?.name})' ?? '',
+        '${user.currency.symbol} (${user.currency.name})',
         textAlign: TextAlign.end,
         style: TextStyle(
           color: Colors.grey,
@@ -225,7 +226,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           var enabled = snapshot.data;
 
           return ListTile(
-            enabled: enabled,
+            enabled: enabled ?? false,
             leading: Icon(
               Icons.fingerprint,
               color: Theme.of(context).colorScheme.secondary,
@@ -241,12 +242,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             trailing: Switch(
               value: settings.biometricsEnabled,
-              activeColor: Theme.of(context).colorScheme.secondary,
-              onChanged: enabled
-                  ? (value) {
-                      settings.setBiometricsEnabled(value);
-                    }
-                  : null,
+              activeThumbColor: Theme.of(context).colorScheme.secondary,
+              onChanged: (value) {
+                settings.setBiometricsEnabled(value);
+              },
             ),
             onTap: () {
               settings.setBiometricsEnabled(!settings.biometricsEnabled);
@@ -272,7 +271,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
       ),
       trailing: DropdownButton<ThemeOptions>(
-        onChanged: settings.setTheme,
+        onChanged: (value) {
+          if (value != null) settings.setTheme(value);
+        },
         value: settings.theme,
         items: [
           DropdownMenuItem(
@@ -305,7 +306,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
       ),
       trailing: DropdownButton<Locale>(
-        onChanged: settings.setAppLanguage,
+        onChanged: (value) {
+          if (value != null) settings.setAppLanguage(value);
+        },
         value: settings.appLang,
         items: languages
             .map((x) => DropdownMenuItem(
@@ -321,12 +324,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
     List<Color> colorOptions = [
       Color(0xFF1B54A9),
       Colors.black,
-      Colors.red[800],
-      Colors.pink[600],
-      Colors.teal[600],
-      Colors.green[800],
-      Colors.deepOrange[800],
-      Colors.deepPurple[700],
+      Colors.red[800]!,
+      Colors.pink[600]!,
+      Colors.teal[600]!,
+      Colors.green[800]!,
+      Colors.deepOrange[800]!,
+      Colors.deepPurple[700]!,
     ];
 
     return ListTile(
@@ -342,7 +345,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
       trailing: DropdownButton<Color>(
         underline: Container(),
-        onChanged: settings.setAccentColor,
+        onChanged: (value) { if (value != null) settings.setAccentColor(value); },
         value: settings.accentColor,
         items: colorOptions
             .map(

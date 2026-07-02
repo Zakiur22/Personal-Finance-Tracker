@@ -7,8 +7,8 @@ class UpdateNameDialog extends StatefulWidget {
   final String name;
 
   const UpdateNameDialog({
-    Key key,
-    this.name,
+    Key? key,
+    required this.name,
   }) : super(key: key);
 
   @override
@@ -50,14 +50,14 @@ class _UpdateNameDialogState extends State<UpdateNameDialog> {
           Wrap(
             alignment: WrapAlignment.center,
             children: <Widget>[
-              FlatButton.icon(
+              TextButton.icon(
                 onPressed: () {
                   UserDatabaseService(user).updateUserName(
                     _nameController.text,
                   );
                   Navigator.pop(context);
                 },
-                textColor: Theme.of(context).colorScheme.secondary,
+                style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.secondary),
                 icon: Icon(Icons.sync),
                 label: Text('Update'),
               ),

@@ -9,7 +9,7 @@ import 'package:intl/intl.dart';
 
 class ExportDialog extends StatefulWidget {
   const ExportDialog({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -18,9 +18,9 @@ class ExportDialog extends StatefulWidget {
 
 class _ExportDialogState extends State<ExportDialog> {
   bool loading = false;
-  String downloadLink;
+  String? downloadLink;
   String format = 'csv';
-  DateTime startDate, endDate;
+  DateTime? startDate, endDate;
   TextEditingController _startDateCtrl = TextEditingController();
   TextEditingController _endDateCtrl = TextEditingController();
 
@@ -57,7 +57,7 @@ class _ExportDialogState extends State<ExportDialog> {
               );
 
               if (startDate != null) {
-                setDate(_startDateCtrl, startDate);
+                setDate(_startDateCtrl, startDate!);
               }
             },
             decoration: InputDecoration(
@@ -77,7 +77,7 @@ class _ExportDialogState extends State<ExportDialog> {
               );
 
               if (endDate != null) {
-                setDate(_endDateCtrl, endDate);
+                setDate(_endDateCtrl, endDate!);
               }
             },
             decoration: InputDecoration(
@@ -99,7 +99,7 @@ class _ExportDialogState extends State<ExportDialog> {
           DropdownButtonFormField(
             value: format,
             onChanged: (v) {
-              setState(() => format = v);
+              setState(() => format = v ?? "csv");
             },
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.symmetric(
@@ -122,7 +122,7 @@ class _ExportDialogState extends State<ExportDialog> {
           ThriftyButton(
             title: S.of(context).exportBottomSheetButtonTextExport,
             onPressed: (isDatePeriodValid() && downloadLink == null && !loading)
-                ? () => beginExport(user)
+                ? () { beginExport(user); }
                 : null,
           ),
           SizedBox(height: 20),
@@ -132,13 +132,13 @@ class _ExportDialogState extends State<ExportDialog> {
                 )
               : Container(),
           downloadLink != null
-              ? FlatButton.icon(
+              ? TextButton.icon(
                   onPressed: () async {
-                    if (await canLaunch(downloadLink))
-                      await launch(downloadLink);
+                    if (downloadLink != null && await canLaunchUrl(Uri.parse(downloadLink!)))
+                      await launchUrl(Uri.parse(downloadLink!));
                   },
-                  padding: const EdgeInsets.symmetric(vertical: 15),
-                  textColor: Theme.of(context).colorScheme.secondary,
+                  
+                  style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.secondary),
                   icon: Icon(Icons.cloud_download),
                   label: Text(
                     S.of(context).exportBottomSheetButtonTextDownload,
@@ -160,17 +160,17 @@ class _ExportDialogState extends State<ExportDialog> {
 
   bool isDatePeriodValid() {
     if (startDate == null || endDate == null) return false;
-    var difference = endDate.difference(startDate);
+    var difference = endDate!.difference(startDate!);
     if (difference.isNegative) return false;
-    if (difference.inDays == 0 && (startDate.day == endDate.day)) return false;
+    if (difference.inDays == 0 && (startDate!.day == endDate!.day)) return false;
     return true;
   }
 
   Future beginExport(User user) async {
     setState(() => loading = true);
     var url =
-        'https://us-central1-be-thrifty-today.cloudfunctions.net/export/$format?uid=${user.uid}&startDate=${startDate.toIso8601String()}&endDate=${endDate.toIso8601String()}';
-    var res = await http.get(url);
+        'https://us-central1-be-thrifty-today.cloudfunctions.net/export/$format?uid=${user.uid}&startDate=${startDate!.toIso8601String()}&endDate=${endDate!.toIso8601String()}';
+    var res = await http.get(Uri.parse(url));
     setState(() => loading = false);
     setState(() => downloadLink = res.body);
   }

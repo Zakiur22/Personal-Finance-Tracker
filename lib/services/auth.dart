@@ -1,10 +1,10 @@
-import 'package:bethriftytoday/models/models.dart';
-import 'package:bethriftytoday/services/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:bethriftytoday/models/models.dart' as models;
+import 'package:bethriftytoday/services/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
-  static FirebaseAuth _auth = FirebaseAuth.instance;
+  static final FirebaseAuth _auth = FirebaseAuth.instance;
 
   final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: [
     'https://www.googleapis.com/auth/plus.me',
@@ -12,49 +12,52 @@ class AuthService {
     'https://www.googleapis.com/auth/userinfo.profile',
   ]);
 
-  Future<User> get getUser =>
-      _auth.currentUser().then((user) => User.fromFirebaseUser(user));
+  Future<models.User> get getUser async {
+    final firebaseUser = _auth.currentUser;
+    return models.User.fromFirebaseUser(firebaseUser);
+  }
 
-  Stream<User> get user =>
-      _auth.onAuthStateChanged.map((user) => User.fromFirebaseUser(user));
+  Stream<models.User> get user =>
+      _auth.authStateChanges().map((firebaseUser) => models.User.fromFirebaseUser(firebaseUser));
 
-  Future<User> signInWithGoogle() async {
+  Future<models.User> signInWithGoogle() async {
     try {
-      AuthCredential credential = await getGoogleAuthCredential();
-      AuthResult authResult = await _auth.signInWithCredential(credential);
-      User user = await mapUserFromFirebaseUser(authResult);
+      final credential = await getGoogleAuthCredential();
+      final authResult = await _auth.signInWithCredential(credential);
+      final user = await mapUserFromFirebaseUser(authResult);
       return user;
     } catch (e) {
-      print(e.message);
+      print(e.toString());
       throw Exception('Something went horribly wrong, please try again later!');
     }
   }
 
   Future<AuthCredential> getGoogleAuthCredential() async {
-    GoogleSignInAccount googleAccount = await _googleSignIn.signIn();
-    GoogleSignInAuthentication googleAuthentication =
-        await googleAccount.authentication;
-    AuthCredential credential = GoogleAuthProvider.getCredential(
+    final googleAccount = await _googleSignIn.signIn();
+    if (googleAccount == null) throw Exception('Sign in aborted');
+    final googleAuthentication = await googleAccount.authentication;
+    final credential = GoogleAuthProvider.credential(
       idToken: googleAuthentication.idToken,
       accessToken: googleAuthentication.accessToken,
     );
     return credential;
   }
 
-  Future<User> signInAnonymously() async {
+  Future<models.User> signInAnonymously() async {
     try {
-      AuthResult authResult = await _auth.signInAnonymously();
-      User user = await mapUserFromFirebaseUser(authResult);
+      final authResult = await _auth.signInAnonymously();
+      final user = await mapUserFromFirebaseUser(authResult);
       return user;
     } catch (e) {
-      print(e.message);
+      print(e.toString());
       throw Exception('Something went horribly wrong, please try again later!');
     }
   }
 
-  Future<User> mapUserFromFirebaseUser(AuthResult authResult) async {
-    FirebaseUser firebaseUser = authResult.user;
-    User user = User.fromFirebaseUser(firebaseUser);
+  Future<models.User> mapUserFromFirebaseUser(UserCredential authResult) async {
+    final firebaseUser = authResult.user;
+    if (firebaseUser == null) throw Exception('Firebase user is null');
+    final user = models.User.fromFirebaseUser(firebaseUser);
     try {
       if (!(await UserDatabaseService(user).checkIfUserExists)) {
         UserDatabaseService(user).createUser();
@@ -65,22 +68,24 @@ class AuthService {
 
   Future signOut() async {
     try {
-      _googleSignIn.signOut();
+      await _googleSignIn.signOut();
       return await _auth.signOut();
     } catch (e) {
-      print(e.message);
+      print(e.toString());
       throw Exception('Something went horribly wrong, please try again later!');
     }
   }
 
   Future deleteUser() async {
-    FirebaseUser firebaseUser = await _auth.currentUser();
-    if (firebaseUser.providerId != 'firebase') {
-      AuthCredential credential = await getGoogleAuthCredential();
-      AuthResult authResult = await _auth.signInWithCredential(credential);
-      firebaseUser = authResult.user;
+    final firebaseUser = _auth.currentUser;
+    if (firebaseUser == null) throw Exception('No user signed in');
+    User targetUser = firebaseUser;
+    if (targetUser.providerData.isEmpty || targetUser.providerData.first.providerId != 'firebase') {
+      final credential = await getGoogleAuthCredential();
+      final authResult = await _auth.signInWithCredential(credential);
+      targetUser = authResult.user!;
     }
-    await firebaseUser.delete();
+    await targetUser.delete();
     signOut();
   }
 }

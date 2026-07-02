@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class ThriftyButton extends StatefulWidget {
   final String title;
-  final Function onPressed;
+  final VoidCallback? onPressed;
 
   const ThriftyButton({
-    Key key,
-    this.title,
+    Key? key,
+    required this.title,
     this.onPressed,
   }) : super(key: key);
 
@@ -22,9 +22,12 @@ class _ThriftyButtonState extends State<ThriftyButton> {
       height: 50,
       child: TextButton(
         onPressed: this.widget.onPressed,
-        padding: const EdgeInsets.symmetric(horizontal: 30),
-        color: Theme.of(context).colorScheme.secondary,
-        disabledColor: Theme.of(context).colorScheme.secondary.withValues(alpha: 0.5),
+        style: TextButton.styleFrom(
+          backgroundColor: Theme.of(context).colorScheme.secondary,
+          disabledBackgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
+           
+        ),
+        
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[

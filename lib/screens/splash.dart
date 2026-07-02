@@ -53,11 +53,12 @@ class _SplashScreenState extends State<SplashScreen>
       if (await _localAuthentication.canCheckBiometrics) {
         if (prefs.getBool('biometricsEnabled') ?? false) {
           isAuthenticated =
-              await _localAuthentication.authenticateWithBiometrics(
+              await _localAuthentication.authenticate(
             localizedReason: "Please authenticate yourself to access the app.",
-            sensitiveTransaction: false,
-            useErrorDialogs: true,
-            stickyAuth: true,
+            options: const AuthenticationOptions(
+              stickyAuth: true,
+              useErrorDialogs: true,
+            ),
           );
         }
       }
@@ -86,7 +87,7 @@ class _SplashScreenState extends State<SplashScreen>
         builder: (context) => Dialog(
           child: Container(
             padding: const EdgeInsets.all(40),
-            child: Text(e.message),
+            child: Text(e.message ?? 'An error occurred'),
           ),
         ),
       );
