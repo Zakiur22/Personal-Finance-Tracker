@@ -22,60 +22,52 @@ class _HomeScreenState extends State<HomeScreen> {
     var user = Provider.of<User>(context);
     updateStatusBarColor(context);
 
-    if (user != null) {
-      _firebaseMessaging.getToken().then((token) {
-        UserDatabaseService(user).updateUserPushToken(token ?? '');
-      });
+    _firebaseMessaging.getToken().then((token) {
+      UserDatabaseService(user).updateUserPushToken(token ?? '');
+    });
 
-      return MultiProvider(
-        providers: [
-          StreamProvider<User>(
-            create: (context) => UserDatabaseService(user).userDocument,
-            initialData: user,
-          ),
-          StreamProvider<double>(
-            create: (context) => TransactionDatabaseService(user).balance,
-            initialData: 0.0,
-          ),
-          StreamProvider<List<Transaction>>(
-            create: (context) => TransactionDatabaseService(user)
-                .expensesByMonth(DateTime.now()),
-            initialData: [],
-          ),
-        ],
-        child: Scaffold(
-          key: _scaffoldKey,
-          drawer: Drawer(
-            child: ThriftyDrawer(),
-          ),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerFloat,
-          floatingActionButton: AddTransactionFloatingButton(),
-          body: SafeArea(
-            bottom: false,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                ThriftyAppBar(),
-                Expanded(
-                  child: ListView(
-                    children: <Widget>[
-                      ThriftyOverview(),
-                      DailyTransactionList(),
-                    ],
-                  ),
+    return MultiProvider(
+      providers: [
+        StreamProvider<User>(
+          create: (context) => UserDatabaseService(user).userDocument,
+          initialData: user,
+        ),
+        StreamProvider<double>(
+          create: (context) => TransactionDatabaseService(user).balance,
+          initialData: 0.0,
+        ),
+        StreamProvider<List<Transaction>>(
+          create: (context) => TransactionDatabaseService(user)
+              .expensesByMonth(DateTime.now()),
+          initialData: [],
+        ),
+      ],
+      child: Scaffold(
+        key: _scaffoldKey,
+        drawer: Drawer(
+          child: ThriftyDrawer(),
+        ),
+        floatingActionButtonLocation:
+            FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: AddTransactionFloatingButton(),
+        body: SafeArea(
+          bottom: false,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              ThriftyAppBar(),
+              Expanded(
+                child: ListView(
+                  children: <Widget>[
+                    ThriftyOverview(),
+                    DailyTransactionList(),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
-      );
-    } else {
-      return Scaffold(
-        body: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
-    }
+      ),
+    );
   }
 }
