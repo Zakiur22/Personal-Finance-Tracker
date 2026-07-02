@@ -27,7 +27,7 @@ class _TransactionListState extends State<TransactionList> {
       children: <Widget>[
         buildListHeader(),
         ...visible
-            ? widget.grouped[widget.date].map((txn) => TransactionListTile(txn))
+            ? (widget.grouped[widget.date]?.map((txn) => TransactionListTile(txn)) ?? [])
             : [],
       ],
     );
@@ -55,7 +55,7 @@ class _TransactionListState extends State<TransactionList> {
                     ? Container()
                     : Text(
                         S.of(context).transactionListHiddenTransactionText(
-                            widget.grouped[widget.date].length),
+                            widget.grouped[widget.date]?.length ?? 0),
                         style: TextStyle(fontSize: 12, color: Colors.grey),
                       ),
                 SizedBox(width: 5),
