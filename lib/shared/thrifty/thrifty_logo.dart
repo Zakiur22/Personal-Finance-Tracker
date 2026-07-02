@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class ThriftyLogo extends StatelessWidget {
@@ -6,10 +5,10 @@ class ThriftyLogo extends StatelessWidget {
   final Color color;
 
   const ThriftyLogo({
-    Key key,
-    this.size,
+    super.key,
+    required this.size,
     this.color = Colors.white,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
