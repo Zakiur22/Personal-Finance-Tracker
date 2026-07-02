@@ -73,7 +73,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
       ),
       trailing: Text(
-        user?.name ?? '',
+        user.name,
         textAlign: TextAlign.end,
         style: TextStyle(
           color: Colors.grey,
@@ -105,7 +105,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
       ),
       trailing: Text(
-        user?.email ?? '',
+        user.email,
         textAlign: TextAlign.end,
         style: TextStyle(
           color: Colors.grey,
