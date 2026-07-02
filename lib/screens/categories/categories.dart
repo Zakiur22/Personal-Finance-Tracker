@@ -121,7 +121,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         decoration: BoxDecoration(
           border: Border.all(
             width: 0.5,
-            color: Colors.grey.withOpacity(0.2),
+            color: Colors.grey.withValues(alpha: 0.2),
           ),
         ),
         child: Column(
@@ -152,7 +152,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               onLongPress: () async {
                 await categoryProvider.delete(x);
 
-                _scaffoldKey.currentState.showSnackBar(SnackBar(
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text(
                     S.of(context).categoriesScreenSnackbarTextDeleteMessage,
                     textAlign: TextAlign.center,
@@ -165,7 +165,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 decoration: BoxDecoration(
                   border: Border.all(
                     width: 0.5,
-                    color: Colors.grey.withOpacity(0.15),
+                    color: Colors.grey.withValues(alpha: 0.15),
                   ),
                 ),
                 child: Column(

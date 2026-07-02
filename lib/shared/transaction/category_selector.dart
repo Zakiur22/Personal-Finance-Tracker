@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 class CategorySelector extends StatelessWidget {
   final Category category;
   final bool isSelected;
-  final Function onPressed;
+  final VoidCallback onPressed;
 
   const CategorySelector({
-    Key key,
-    this.category,
+    super.key,
+    required this.category,
     this.isSelected = false,
-    this.onPressed,
-  }) : super(key: key);
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class CategorySelector extends StatelessWidget {
               ? Align(
                   alignment: Alignment.center,
                   child: Container(
-                    color: thriftyBlue.withOpacity(0.15),
+                    color: thriftyBlue.withValues(alpha: 0.15),
                   ),
                 )
               : Container(),

@@ -14,7 +14,7 @@ class DailyTransactionList extends StatelessWidget {
       stream: TransactionDatabaseService(user).transactions,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          if (snapshot.data.length == 0) {
+          if (snapshot.data?.isEmpty ?? true) {
             return NoTransactionsFound();
           }
 
@@ -30,7 +30,7 @@ class DailyTransactionList extends StatelessWidget {
           }
 
           var grouped = TransactionDatabaseService(user)
-              .groupTransactionsByDate(snapshot.data);
+              .groupTransactionsByDate(snapshot.data!);
 
           return ListView.builder(
             shrinkWrap: true,

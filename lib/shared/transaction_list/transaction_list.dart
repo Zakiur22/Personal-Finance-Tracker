@@ -8,10 +8,10 @@ class TransactionList extends StatefulWidget {
   final Map<String, List<Transaction>> grouped;
 
   const TransactionList({
-    Key key,
-    this.date,
-    this.grouped,
-  }) : super(key: key);
+    super.key,
+    required this.date,
+    required this.grouped,
+  });
 
   @override
   _TransactionListState createState() => _TransactionListState();

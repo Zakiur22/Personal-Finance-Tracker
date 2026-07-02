@@ -49,9 +49,7 @@ class _CurrencySetupScreenState extends State<CurrencySetupScreen> {
 }
 
 class CurrencyGridView extends StatelessWidget {
-  const CurrencyGridView({
-    Key key,
-  }) : super(key: key);
+  const CurrencyGridView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -83,13 +81,13 @@ class CurrencyGridView extends StatelessWidget {
 
 class CurrencyCircle extends StatelessWidget {
   final Currency currency;
-  final Function onPressed;
+  final VoidCallback onPressed;
 
   const CurrencyCircle({
-    Key key,
-    this.currency,
-    this.onPressed,
-  }) : super(key: key);
+    super.key,
+    required this.currency,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {

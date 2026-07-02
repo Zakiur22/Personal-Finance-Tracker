@@ -24,7 +24,7 @@ class _ThriftyButtonState extends State<ThriftyButton> {
         onPressed: this.widget.onPressed,
         padding: const EdgeInsets.symmetric(horizontal: 30),
         color: Theme.of(context).colorScheme.secondary,
-        disabledColor: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
+        disabledColor: Theme.of(context).colorScheme.secondary.withValues(alpha: 0.5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[

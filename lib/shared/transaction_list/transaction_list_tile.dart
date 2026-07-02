@@ -41,7 +41,7 @@ class TransactionListTile extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                  color: Colors.grey.withOpacity(0.15),
+                  color: Colors.grey.withValues(alpha: 0.15),
                 ),
               ),
             ),
@@ -132,7 +132,7 @@ class TransactionListTile extends StatelessWidget {
     return Text(
       formatAmount(user, transaction.amount),
       style: transactionAmountStyle(
-        (transaction.amount > 0) ? Colors.green[400] : Colors.red[700],
+        (transaction.amount > 0) ? (Colors.green[400] ?? Colors.green) : (Colors.red[700] ?? Colors.red),
       ),
     );
   }

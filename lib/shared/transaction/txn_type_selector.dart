@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 class TransactionTypeSelector extends StatelessWidget {
   final String title;
   final bool isSelected;
-  final Function onPressed;
+  final VoidCallback onPressed;
 
   const TransactionTypeSelector({
-    Key key,
-    this.title,
+    super.key,
+    required this.title,
     this.isSelected = false,
-    this.onPressed,
-  }) : super(key: key);
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {

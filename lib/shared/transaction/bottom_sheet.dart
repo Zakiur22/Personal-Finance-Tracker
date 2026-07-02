@@ -201,7 +201,7 @@ class _TransactionBottomSheetState extends State<TransactionBottomSheet> {
                           border: Border(
                             right: BorderSide(
                               width: 1,
-                              color: Colors.grey.withOpacity(0.5),
+                              color: Colors.grey.withValues(alpha: 0.5),
                             ),
                           ),
                         ),

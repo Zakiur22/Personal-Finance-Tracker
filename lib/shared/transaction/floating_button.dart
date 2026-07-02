@@ -2,9 +2,7 @@ import 'package:bethriftytoday/shared/shared.dart';
 import 'package:flutter/material.dart';
 
 class AddTransactionFloatingButton extends StatelessWidget {
-  AddTransactionFloatingButton({
-    Key key,
-  }) : super(key: key);
+  const AddTransactionFloatingButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +15,7 @@ class AddTransactionFloatingButton extends StatelessWidget {
         );
       },
       elevation: 0,
-      splashColor: Colors.white.withOpacity(0.5),
+      splashColor: Colors.white.withValues(alpha: 0.5),
       backgroundColor: Theme.of(context).colorScheme.secondary,
       foregroundColor: Colors.white,
       child: Icon(

@@ -101,7 +101,7 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
                             border: Border(
                               right: BorderSide(
                                 width: 1,
-                                color: Colors.grey.withOpacity(0.5),
+                                color: Colors.grey.withValues(alpha: 0.5),
                               ),
                             ),
                           ),
@@ -207,7 +207,7 @@ class CategoryIcon extends StatelessWidget {
                 ? Center(
                     child: Container(
                       width: 80,
-                      color: thriftyBlue.withOpacity(0.2),
+                      color: thriftyBlue.withValues(alpha: 0.2),
                     ),
                   )
                 : Container(),

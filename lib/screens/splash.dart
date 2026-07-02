@@ -69,7 +69,7 @@ class _SplashScreenState extends State<SplashScreen>
           Navigator.pushReplacementNamed(context, LoginScreen.routeName);
         }
       } else {
-        _scaffoldKey.currentState.showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
             'No soup for you! 🥣',
             textAlign: TextAlign.center,
