@@ -9,10 +9,10 @@ class ThriftyAppBar extends StatefulWidget {
   final bool hideAccount;
 
   const ThriftyAppBar({
-    Key key,
+    super.key,
     this.canGoBack = false,
     this.hideAccount = false,
-  }) : super(key: key);
+  });
 
   @override
   _ThriftyAppBarState createState() => _ThriftyAppBarState();
@@ -57,7 +57,7 @@ class _ThriftyAppBarState extends State<ThriftyAppBar> {
   }
 
   Widget buildCircleAvatar(User user) {
-    if (user != null && user.photoURL.isNotEmpty) {
+    if (user.photoURL.isNotEmpty) {
       return Container(
         width: 50,
         child: ClipOval(
