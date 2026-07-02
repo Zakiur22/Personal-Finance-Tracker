@@ -114,7 +114,7 @@ class _TransactionBottomSheetState extends State<TransactionBottomSheet> {
                 decoration: InputDecoration(
                   prefixIcon: Icon(
                     isExpense ? Icons.remove : Icons.add,
-                    color: Theme.of(context).accentColor,
+                    color: Theme.of(context).colorScheme.secondary,
                   ),
                   labelText:
                       S.of(context).transactionBottomSheetLabelTextAmount,

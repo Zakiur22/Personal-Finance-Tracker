@@ -12,7 +12,7 @@ class OnboardingHeader extends StatelessWidget {
       child: Container(
         width: double.infinity,
         height: 200,
-        color: Theme.of(context).accentColor,
+        color: Theme.of(context).colorScheme.secondary,
         child: Column(
           children: <Widget>[
             Container(

@@ -33,7 +33,7 @@ class ThriftyOverview extends StatelessWidget {
           padding: const EdgeInsets.all(25),
           width: double.infinity,
           decoration: BoxDecoration(
-            color: Theme.of(context).accentColor,
+            color: Theme.of(context).colorScheme.secondary,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Row(
@@ -109,7 +109,7 @@ class ThriftyOverview extends StatelessWidget {
       backgroundColor: Colors.white,
       child: CircleAvatar(
         radius: (35 - 6).toDouble(),
-        backgroundColor: Theme.of(context).accentColor,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         child: Text(
           ((calculateAbsoluteSum(expenses) / user.budget) * 100)
                   .toStringAsFixed(0) +

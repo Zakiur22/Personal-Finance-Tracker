@@ -1,12 +1,11 @@
 import 'package:bethriftytoday/config/config.dart';
 import 'package:bethriftytoday/generated/l10n.dart';
-import 'package:bethriftytoday/models/models.dart';
+import 'package:bethriftytoday/models/models.dart' as models;
 import 'package:bethriftytoday/screens/screens.dart';
 import 'package:bethriftytoday/services/category.dart';
 import 'package:bethriftytoday/services/currency.dart';
 import 'package:bethriftytoday/services/services.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_analytics/observer.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -22,14 +21,15 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    FirebaseAnalytics analytics = FirebaseAnalytics();
+    FirebaseAnalytics analytics = FirebaseAnalytics.instance;
     updateStatusBarColor(context);
     setupCloudMessaging();
 
     return MultiProvider(
       providers: [
-        StreamProvider<User>.value(
+        StreamProvider<models.User?>.value(
           value: AuthService().user,
+          initialData: null,
         ),
         ChangeNotifierProvider<CategoryProvider>(
           create: (context) => CategoryProvider(),
@@ -58,7 +58,9 @@ class _MyAppState extends State<MyApp> {
             ],
             title: 'Be Thrifty Today',
             theme: themeSelector(settings.theme).copyWith(
-              accentColor: settings.accentColor,
+              colorScheme: themeSelector(settings.theme).colorScheme.copyWith(
+                secondary: settings.accentColor,
+              ),
             ),
             initialRoute: SplashScreen.routeName,
             routes: routes,
@@ -82,18 +84,23 @@ class _MyAppState extends State<MyApp> {
   }
 
   setupCloudMessaging() async {
-    FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
 
-    _firebaseMessaging.configure(
-      onMessage: (Map<String, dynamic> message) async {
-        print("onMessage: $message");
-      },
-      onLaunch: (Map<String, dynamic> message) async {
-        print("onLaunch: $message");
-      },
-      onResume: (Map<String, dynamic> message) async {
-        print("onResume: $message");
-      },
+    // Request permission for iOS
+    await messaging.requestPermission(
+      alert: true,
+      badge: true,
+      sound: true,
     );
+
+    // Handle foreground messages
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      print("onMessage: ${message.data}");
+    });
+
+    // Handle background messages
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      print("onMessageOpenedApp: ${message.data}");
+    });
   }
 }

@@ -8,27 +8,53 @@ import 'intl/messages_all.dart';
 // Made by Localizely
 // **************************************************************************
 
+// ignore_for_file: non_constant_identifier_names, lines_longer_than_80_chars
+// ignore_for_file: join_return_with_assignment, prefer_final_in_for_each
+// ignore_for_file: avoid_redundant_argument_values, avoid_escaping_inner_quotes
+
 class S {
-  S(this.localeName);
-  
-  static const AppLocalizationDelegate delegate =
-    AppLocalizationDelegate();
+  S();
+
+  static S? _current;
+
+  static S get current {
+    assert(
+      _current != null,
+      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
+    );
+    return _current!;
+  }
+
+  static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final String name = locale.countryCode.isEmpty ? locale.languageCode : locale.toString();
-    final String localeName = Intl.canonicalizedLocale(name);
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
+    final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
-      return S(localeName);
+      final instance = S();
+      S._current = instance;
+
+      return instance;
     });
-  } 
+  }
 
   static S of(BuildContext context) {
+    final instance = S.maybeOf(context);
+    assert(
+      instance != null,
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
+    );
+    return instance!;
+  }
+
+  static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
 
-  final String localeName;
-
+  /// `ADD`
   String get addCategoryBottomSheetButtonTextAdd {
     return Intl.message(
       'ADD',
@@ -38,6 +64,7 @@ class S {
     );
   }
 
+  /// `CANCEL`
   String get addCategoryBottomSheetButtonTextCancel {
     return Intl.message(
       'CANCEL',
@@ -47,7 +74,8 @@ class S {
     );
   }
 
-  String addCategoryBottomSheetHeadingText(dynamic type) {
+  /// `Add New {type} Category`
+  String addCategoryBottomSheetHeadingText(Object type) {
     return Intl.message(
       'Add New $type Category',
       name: 'addCategoryBottomSheetHeadingText',
@@ -56,6 +84,7 @@ class S {
     );
   }
 
+  /// `Category Name`
   String get addCategoryBottomSheetLabelTextCategoryName {
     return Intl.message(
       'Category Name',
@@ -65,6 +94,7 @@ class S {
     );
   }
 
+  /// `Be Thrifty Today`
   String get appName {
     return Intl.message(
       'Be Thrifty Today',
@@ -74,6 +104,7 @@ class S {
     );
   }
 
+  /// `Categories`
   String get categoriesScreenAppBarTitle {
     return Intl.message(
       'Categories',
@@ -83,6 +114,7 @@ class S {
     );
   }
 
+  /// `Add New`
   String get categoriesScreenButtonTextAddNew {
     return Intl.message(
       'Add New',
@@ -92,6 +124,7 @@ class S {
     );
   }
 
+  /// `The category has been successfully deleted`
   String get categoriesScreenSnackbarTextDeleteMessage {
     return Intl.message(
       'The category has been successfully deleted',
@@ -101,6 +134,7 @@ class S {
     );
   }
 
+  /// `Yes`
   String get categoriesScreenSnackbarTextResetCategoriesAction {
     return Intl.message(
       'Yes',
@@ -110,6 +144,7 @@ class S {
     );
   }
 
+  /// `Are you sure you want to reset all categories to the original?`
   String get categoriesScreenSnackbarTextResetCategoriesConfirmation {
     return Intl.message(
       'Are you sure you want to reset all categories to the original?',
@@ -119,6 +154,7 @@ class S {
     );
   }
 
+  /// `All categories have been reset successfully`
   String get categoriesScreenSnackbarTextResetCategoriesSuccess {
     return Intl.message(
       'All categories have been reset successfully',
@@ -128,6 +164,7 @@ class S {
     );
   }
 
+  /// `Expense`
   String get categoriesScreenTabBarTextExpense {
     return Intl.message(
       'Expense',
@@ -137,6 +174,7 @@ class S {
     );
   }
 
+  /// `Income`
   String get categoriesScreenTabBarTextIncome {
     return Intl.message(
       'Income',
@@ -146,15 +184,58 @@ class S {
     );
   }
 
-  String categoryName(dynamic category) {
-    return Intl.message(
-      '{category, select, Automobile {Automobile} Awards {Awards} BabyCare {Baby Care} Bonus {Bonus} Books {Books} Charity {Charity} Clothing {Clothing} Drinks {Drinks} Education {Education} Electronics {Electronics} Entertainment {Entertainment} Food {Food} Freelance {Freelance} FriendsFamily {Friends & Family} Gifts {Gifts} Grants {Grants} Groceries {Groceries} Health {Health} Hobbies {Hobbies} Insurance {Insurance} Interest {Interest} Investments {Investments} Laundry {Laundry} Lottery {Lottery} Mobile {Mobile} Office {Office} Others {Others} Pets {Pets} Refunds {Refunds} Rent {Rent} Salary {Salary} Sale {Sale} SalonSpa {Salon & Spa} Shopping {Shopping} Tax {Tax} Transportation {Transportation} Travel {Travel} Utilities {Utilities} other {{category}}}',
+  /// `{category, select, Automobile {Automobile} Awards {Awards} BabyCare {Baby Care} Bonus {Bonus} Books {Books} Charity {Charity} Clothing {Clothing} Drinks {Drinks} Education {Education} Electronics {Electronics} Entertainment {Entertainment} Food {Food} Freelance {Freelance} FriendsFamily {Friends & Family} Gifts {Gifts} Grants {Grants} Groceries {Groceries} Health {Health} Hobbies {Hobbies} Insurance {Insurance} Interest {Interest} Investments {Investments} Laundry {Laundry} Lottery {Lottery} Mobile {Mobile} Office {Office} Others {Others} Pets {Pets} Refunds {Refunds} Rent {Rent} Salary {Salary} Sale {Sale} SalonSpa {Salon & Spa} Shopping {Shopping} Tax {Tax} Transportation {Transportation} Travel {Travel} Utilities {Utilities} other {{category}}}`
+  String categoryName(Object category) {
+    return Intl.select(
+      category,
+      {
+        'Automobile': 'Automobile',
+        'Awards': 'Awards',
+        'BabyCare': 'Baby Care',
+        'Bonus': 'Bonus',
+        'Books': 'Books',
+        'Charity': 'Charity',
+        'Clothing': 'Clothing',
+        'Drinks': 'Drinks',
+        'Education': 'Education',
+        'Electronics': 'Electronics',
+        'Entertainment': 'Entertainment',
+        'Food': 'Food',
+        'Freelance': 'Freelance',
+        'FriendsFamily': 'Friends & Family',
+        'Gifts': 'Gifts',
+        'Grants': 'Grants',
+        'Groceries': 'Groceries',
+        'Health': 'Health',
+        'Hobbies': 'Hobbies',
+        'Insurance': 'Insurance',
+        'Interest': 'Interest',
+        'Investments': 'Investments',
+        'Laundry': 'Laundry',
+        'Lottery': 'Lottery',
+        'Mobile': 'Mobile',
+        'Office': 'Office',
+        'Others': 'Others',
+        'Pets': 'Pets',
+        'Refunds': 'Refunds',
+        'Rent': 'Rent',
+        'Salary': 'Salary',
+        'Sale': 'Sale',
+        'SalonSpa': 'Salon & Spa',
+        'Shopping': 'Shopping',
+        'Tax': 'Tax',
+        'Transportation': 'Transportation',
+        'Travel': 'Travel',
+        'Utilities': 'Utilities',
+        'other': '$category',
+      },
       name: 'categoryName',
       desc: '',
       args: [category],
     );
   }
 
+  /// `Currencies`
   String get currenciesScreenAppBarTitle {
     return Intl.message(
       'Currencies',
@@ -164,6 +245,7 @@ class S {
     );
   }
 
+  /// `Yes`
   String get currenciesScreenSnackbarTextResetCurrenciesAction {
     return Intl.message(
       'Yes',
@@ -173,6 +255,7 @@ class S {
     );
   }
 
+  /// `Are you sure you want to reset all currencies to the original?`
   String get currenciesScreenSnackbarTextResetCurrenciesConfirmation {
     return Intl.message(
       'Are you sure you want to reset all currencies to the original?',
@@ -182,6 +265,7 @@ class S {
     );
   }
 
+  /// `All currencies have been reset successfully`
   String get currenciesScreenSnackbarTextResetCurrenciesSuccess {
     return Intl.message(
       'All currencies have been reset successfully',
@@ -191,6 +275,7 @@ class S {
     );
   }
 
+  /// `What's your currency?`
   String get currencySetupTextHeadline {
     return Intl.message(
       'What\'s your currency?',
@@ -200,6 +285,7 @@ class S {
     );
   }
 
+  /// `No, I don't want to leave!`
   String get deleteAccountDialogButtonTextCancel {
     return Intl.message(
       'No, I don\'t want to leave!',
@@ -209,6 +295,7 @@ class S {
     );
   }
 
+  /// `Yes, delete my data!`
   String get deleteAccountDialogButtonTextDelete {
     return Intl.message(
       'Yes, delete my data!',
@@ -218,6 +305,7 @@ class S {
     );
   }
 
+  /// `You will lose all the data (including profile information and your transaction history) when you delete your account. This is an irreversible process, are you sure you want to go through with it?`
   String get deleteAccountDialogContent {
     return Intl.message(
       'You will lose all the data (including profile information and your transaction history) when you delete your account. This is an irreversible process, are you sure you want to go through with it?',
@@ -227,6 +315,7 @@ class S {
     );
   }
 
+  /// `Do you really want to delete your account?`
   String get deleteAccountDialogTitle {
     return Intl.message(
       'Do you really want to delete your account?',
@@ -236,6 +325,7 @@ class S {
     );
   }
 
+  /// `DOWNLOAD`
   String get exportBottomSheetButtonTextDownload {
     return Intl.message(
       'DOWNLOAD',
@@ -245,6 +335,7 @@ class S {
     );
   }
 
+  /// `EXPORT`
   String get exportBottomSheetButtonTextExport {
     return Intl.message(
       'EXPORT',
@@ -254,6 +345,7 @@ class S {
     );
   }
 
+  /// `Export as CSV/JSON`
   String get exportBottomSheetHeadingText {
     return Intl.message(
       'Export as CSV/JSON',
@@ -263,6 +355,7 @@ class S {
     );
   }
 
+  /// `End Date`
   String get exportBottomSheetLabelTextEndDate {
     return Intl.message(
       'End Date',
@@ -272,6 +365,7 @@ class S {
     );
   }
 
+  /// `Start Date`
   String get exportBottomSheetLabelTextStartDate {
     return Intl.message(
       'Start Date',
@@ -281,6 +375,7 @@ class S {
     );
   }
 
+  /// `Start Date must be earlier than End Date`
   String get exportBottomSheetTextDateValidationError {
     return Intl.message(
       'Start Date must be earlier than End Date',
@@ -290,6 +385,7 @@ class S {
     );
   }
 
+  /// `Tap on the + button below to add a new income/expense.`
   String get homeDailyNoTransactionsTextSubtitle {
     return Intl.message(
       'Tap on the + button below to add a new income/expense.',
@@ -299,6 +395,7 @@ class S {
     );
   }
 
+  /// `This list is looking a little bit empty...`
   String get homeDailyNoTransactionsTextTitle {
     return Intl.message(
       'This list is looking a little bit empty...',
@@ -308,6 +405,7 @@ class S {
     );
   }
 
+  /// `Login with Google`
   String get loginButtonTextGoogle {
     return Intl.message(
       'Login with Google',
@@ -317,6 +415,7 @@ class S {
     );
   }
 
+  /// `Login as Guest`
   String get loginButtonTextGuest {
     return Intl.message(
       'Login as Guest',
@@ -326,6 +425,7 @@ class S {
     );
   }
 
+  /// `Be Thrifty Today is a simple and secure money management app that helps you track your income and expenses.`
   String get loginTextTagline {
     return Intl.message(
       'Be Thrifty Today is a simple and secure money management app that helps you track your income and expenses.',
@@ -335,6 +435,7 @@ class S {
     );
   }
 
+  /// `NEXT`
   String get profileSetupButtonTextNext {
     return Intl.message(
       'NEXT',
@@ -344,6 +445,7 @@ class S {
     );
   }
 
+  /// `Email Address`
   String get profileSetupLabelTextEmailAddress {
     return Intl.message(
       'Email Address',
@@ -353,6 +455,7 @@ class S {
     );
   }
 
+  /// `Full Name`
   String get profileSetupLabelTextFullName {
     return Intl.message(
       'Full Name',
@@ -362,6 +465,7 @@ class S {
     );
   }
 
+  /// `Who are you?`
   String get profileSetupTextHeadline {
     return Intl.message(
       'Who are you?',
@@ -371,6 +475,7 @@ class S {
     );
   }
 
+  /// `Account`
   String get settingsScreenHeaderTitleAccount {
     return Intl.message(
       'Account',
@@ -380,6 +485,7 @@ class S {
     );
   }
 
+  /// `Danger Zone`
   String get settingsScreenHeaderTitleDangerZone {
     return Intl.message(
       'Danger Zone',
@@ -389,6 +495,7 @@ class S {
     );
   }
 
+  /// `Preferences`
   String get settingsScreenHeaderTitlePreferences {
     return Intl.message(
       'Preferences',
@@ -398,6 +505,7 @@ class S {
     );
   }
 
+  /// `Accent Color`
   String get settingsScreenSettingTitleAccentColor {
     return Intl.message(
       'Accent Color',
@@ -407,6 +515,7 @@ class S {
     );
   }
 
+  /// `Biometric Security`
   String get settingsScreenSettingTitleBiometric {
     return Intl.message(
       'Biometric Security',
@@ -416,6 +525,7 @@ class S {
     );
   }
 
+  /// `Asks for your fingerprint every time you open the app.`
   String get settingsScreenSettingTitleBiometricDescription {
     return Intl.message(
       'Asks for your fingerprint every time you open the app.',
@@ -425,6 +535,7 @@ class S {
     );
   }
 
+  /// `Currency`
   String get settingsScreenSettingTitleCurrency {
     return Intl.message(
       'Currency',
@@ -434,6 +545,7 @@ class S {
     );
   }
 
+  /// `Delete Account`
   String get settingsScreenSettingTitleDeleteAccount {
     return Intl.message(
       'Delete Account',
@@ -443,6 +555,7 @@ class S {
     );
   }
 
+  /// `Email Address`
   String get settingsScreenSettingTitleEmailAddress {
     return Intl.message(
       'Email Address',
@@ -452,6 +565,7 @@ class S {
     );
   }
 
+  /// `Language`
   String get settingsScreenSettingTitleLanguage {
     return Intl.message(
       'Language',
@@ -461,6 +575,7 @@ class S {
     );
   }
 
+  /// `Full Name`
   String get settingsScreenSettingTitleName {
     return Intl.message(
       'Full Name',
@@ -470,6 +585,7 @@ class S {
     );
   }
 
+  /// `Theme`
   String get settingsScreenSettingTitleTheme {
     return Intl.message(
       'Theme',
@@ -479,6 +595,7 @@ class S {
     );
   }
 
+  /// `AMOLED`
   String get settingsScreenSettingTitleThemeAMOLED {
     return Intl.message(
       'AMOLED',
@@ -488,6 +605,7 @@ class S {
     );
   }
 
+  /// `Dark`
   String get settingsScreenSettingTitleThemeDark {
     return Intl.message(
       'Dark',
@@ -497,6 +615,7 @@ class S {
     );
   }
 
+  /// `Light`
   String get settingsScreenSettingTitleThemeLight {
     return Intl.message(
       'Light',
@@ -506,6 +625,7 @@ class S {
     );
   }
 
+  /// `Check out this app that helps you manage your income and expenses, safe and secure: https://pillai.xyz/thrifty`
   String get thriftyDrawerMessageShare {
     return Intl.message(
       'Check out this app that helps you manage your income and expenses, safe and secure: https://pillai.xyz/thrifty',
@@ -515,6 +635,7 @@ class S {
     );
   }
 
+  /// `About the App`
   String get thriftyDrawerTextAbout {
     return Intl.message(
       'About the App',
@@ -524,6 +645,7 @@ class S {
     );
   }
 
+  /// `This application is open-source and free-to-use, governed under the Apache License 2.0. If you are a developer, please feel free to contribute to the application on GitHub.`
   String get thriftyDrawerTextAboutAppLegalese {
     return Intl.message(
       'This application is open-source and free-to-use, governed under the Apache License 2.0. If you are a developer, please feel free to contribute to the application on GitHub.',
@@ -533,6 +655,7 @@ class S {
     );
   }
 
+  /// `If you love the app and use it regularly, please donate as little as you can, enough to keep the app alive and running on its own. Donation details can be found on the GitHub homepage or the website. Thank you so much!`
   String get thriftyDrawerTextAboutFooter {
     return Intl.message(
       'If you love the app and use it regularly, please donate as little as you can, enough to keep the app alive and running on its own. Donation details can be found on the GitHub homepage or the website. Thank you so much!',
@@ -542,6 +665,7 @@ class S {
     );
   }
 
+  /// `Categories`
   String get thriftyDrawerTextCategories {
     return Intl.message(
       'Categories',
@@ -551,6 +675,7 @@ class S {
     );
   }
 
+  /// `Currencies`
   String get thriftyDrawerTextCurrencies {
     return Intl.message(
       'Currencies',
@@ -560,6 +685,7 @@ class S {
     );
   }
 
+  /// `Export to JSON/CSV`
   String get thriftyDrawerTextExport {
     return Intl.message(
       'Export to JSON/CSV',
@@ -569,6 +695,7 @@ class S {
     );
   }
 
+  /// `Logout`
   String get thriftyDrawerTextLogout {
     return Intl.message(
       'Logout',
@@ -578,6 +705,7 @@ class S {
     );
   }
 
+  /// `Rate the App`
   String get thriftyDrawerTextRate {
     return Intl.message(
       'Rate the App',
@@ -587,6 +715,7 @@ class S {
     );
   }
 
+  /// `Settings`
   String get thriftyDrawerTextSettings {
     return Intl.message(
       'Settings',
@@ -596,6 +725,7 @@ class S {
     );
   }
 
+  /// `Spread the Love`
   String get thriftyDrawerTextShare {
     return Intl.message(
       'Spread the Love',
@@ -605,6 +735,7 @@ class S {
     );
   }
 
+  /// `YOUR BALANCE`
   String get thriftyOverviewTextBalanceHeading {
     return Intl.message(
       'YOUR BALANCE',
@@ -614,7 +745,13 @@ class S {
     );
   }
 
-  String thriftyOverviewTextBudgetSet(dynamic symbol, dynamic spendAmount, dynamic budgetAmount, dynamic monthYear) {
+  /// `You have spent {symbol} {spendAmount} of your total budget of {symbol} {budgetAmount} in the month of {monthYear}.`
+  String thriftyOverviewTextBudgetSet(
+    Object symbol,
+    Object spendAmount,
+    Object budgetAmount,
+    Object monthYear,
+  ) {
     return Intl.message(
       'You have spent $symbol $spendAmount of your total budget of $symbol $budgetAmount in the month of $monthYear.',
       name: 'thriftyOverviewTextBudgetSet',
@@ -623,6 +760,7 @@ class S {
     );
   }
 
+  /// `Tap here to set a monthly budget and manage your expenses efficiently.`
   String get thriftyOverviewTextBudgetUnset {
     return Intl.message(
       'Tap here to set a monthly budget and manage your expenses efficiently.',
@@ -632,6 +770,7 @@ class S {
     );
   }
 
+  /// `ADD`
   String get transactionBottomSheetButtonTextAdd {
     return Intl.message(
       'ADD',
@@ -641,6 +780,7 @@ class S {
     );
   }
 
+  /// `Expense`
   String get transactionBottomSheetButtonTextExpense {
     return Intl.message(
       'Expense',
@@ -650,6 +790,7 @@ class S {
     );
   }
 
+  /// `Income`
   String get transactionBottomSheetButtonTextIncome {
     return Intl.message(
       'Income',
@@ -659,6 +800,7 @@ class S {
     );
   }
 
+  /// `UPDATE`
   String get transactionBottomSheetButtonTextUpdate {
     return Intl.message(
       'UPDATE',
@@ -668,6 +810,7 @@ class S {
     );
   }
 
+  /// `Amount`
   String get transactionBottomSheetLabelTextAmount {
     return Intl.message(
       'Amount',
@@ -677,6 +820,7 @@ class S {
     );
   }
 
+  /// `Date`
   String get transactionBottomSheetLabelTextDate {
     return Intl.message(
       'Date',
@@ -686,6 +830,7 @@ class S {
     );
   }
 
+  /// `Description (optional)`
   String get transactionBottomSheetLabelTextDescription {
     return Intl.message(
       'Description (optional)',
@@ -695,6 +840,7 @@ class S {
     );
   }
 
+  /// `Add New Transaction`
   String get transactionBottomSheetTextHeadingAdd {
     return Intl.message(
       'Add New Transaction',
@@ -704,6 +850,7 @@ class S {
     );
   }
 
+  /// `Update Transaction`
   String get transactionBottomSheetTextHeadingUpdate {
     return Intl.message(
       'Update Transaction',
@@ -713,7 +860,8 @@ class S {
     );
   }
 
-  String transactionListHiddenTransactionText(dynamic howMany) {
+  /// `{howMany, plural, one {1 transaction hidden} other {{howMany} transactions hidden}}`
+  String transactionListHiddenTransactionText(num howMany) {
     return Intl.plural(
       howMany,
       one: '1 transaction hidden',
@@ -724,6 +872,7 @@ class S {
     );
   }
 
+  /// `CLEAR`
   String get updateBudgetBottomSheetButtonTextClear {
     return Intl.message(
       'CLEAR',
@@ -733,6 +882,7 @@ class S {
     );
   }
 
+  /// `SET BUDGET`
   String get updateBudgetBottomSheetButtonTextSetBudget {
     return Intl.message(
       'SET BUDGET',
@@ -742,6 +892,7 @@ class S {
     );
   }
 
+  /// `Please enter a monthly budget that you feel is conservative according to your spending habits.`
   String get updateBudgetBottomSheetHeadingText {
     return Intl.message(
       'Please enter a monthly budget that you feel is conservative according to your spending habits.',
@@ -751,6 +902,7 @@ class S {
     );
   }
 
+  /// `Budget`
   String get updateBudgetBottomSheetLabelTextBudget {
     return Intl.message(
       'Budget',
@@ -766,7 +918,10 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale('es', ''), Locale('kn', ''), Locale('en', ''), Locale('fr', ''),
+      Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'es'),
+      Locale.fromSubtags(languageCode: 'fr'),
+      Locale.fromSubtags(languageCode: 'kn'),
     ];
   }
 
@@ -778,11 +933,9 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   bool shouldReload(AppLocalizationDelegate old) => false;
 
   bool _isSupported(Locale locale) {
-    if (locale != null) {
-      for (Locale supportedLocale in supportedLocales) {
-        if (supportedLocale.languageCode == locale.languageCode) {
-          return true;
-        }
+    for (var supportedLocale in supportedLocales) {
+      if (supportedLocale.languageCode == locale.languageCode) {
+        return true;
       }
     }
     return false;

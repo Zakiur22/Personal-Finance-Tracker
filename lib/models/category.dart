@@ -10,10 +10,10 @@ class Category {
   final String type;
 
   Category({
-    this.id,
-    this.icon,
-    this.name,
-    this.type,
+    required this.id,
+    required this.icon,
+    required this.name,
+    required this.type,
   });
 
   factory Category.fromJson(Map<String, dynamic> json) =>

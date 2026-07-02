@@ -36,7 +36,8 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 
 android {
-    compileSdkVersion 29
+    compileSdk 34
+    namespace "today.bethrifty.app"
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -48,8 +49,8 @@ android {
 
     defaultConfig {
         applicationId "today.bethrifty.app"
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdkVersion flutter.minSdkVersion
+        targetSdkVersion 34
         multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName

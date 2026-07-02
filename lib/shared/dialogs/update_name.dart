@@ -57,7 +57,7 @@ class _UpdateNameDialogState extends State<UpdateNameDialog> {
                   );
                   Navigator.pop(context);
                 },
-                textColor: Theme.of(context).accentColor,
+                textColor: Theme.of(context).colorScheme.secondary,
                 icon: Icon(Icons.sync),
                 label: Text('Update'),
               ),

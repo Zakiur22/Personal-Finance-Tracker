@@ -14,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -24,20 +24,23 @@ class _HomeScreenState extends State<HomeScreen> {
 
     if (user != null) {
       _firebaseMessaging.getToken().then((token) {
-        UserDatabaseService(user).updateUserPushToken(token);
+        UserDatabaseService(user).updateUserPushToken(token ?? '');
       });
 
       return MultiProvider(
         providers: [
-          StreamProvider<User>.value(
-            value: UserDatabaseService(user).userDocument,
+          StreamProvider<User>(
+            create: (context) => UserDatabaseService(user).userDocument,
+            initialData: user,
           ),
-          StreamProvider<double>.value(
-            value: TransactionDatabaseService(user).balance,
+          StreamProvider<double>(
+            create: (context) => TransactionDatabaseService(user).balance,
+            initialData: 0.0,
           ),
-          StreamProvider<List<Transaction>>.value(
-            value: TransactionDatabaseService(user)
+          StreamProvider<List<Transaction>>(
+            create: (context) => TransactionDatabaseService(user)
                 .expensesByMonth(DateTime.now()),
+            initialData: [],
           ),
         ],
         child: Scaffold(

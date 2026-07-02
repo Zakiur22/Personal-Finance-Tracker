@@ -10,7 +10,7 @@ class CategorySelector extends StatelessWidget {
 
   const CategorySelector({
     Key key,
-    @required this.category,
+    this.category,
     this.isSelected = false,
     this.onPressed,
   }) : super(key: key);

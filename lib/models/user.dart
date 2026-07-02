@@ -1,5 +1,5 @@
 import 'package:bethriftytoday/models/models.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user.g.dart';
@@ -14,33 +14,37 @@ class User {
   final Currency currency;
 
   User({
-    this.uid,
-    this.name,
-    this.email,
-    this.budget,
-    this.photoURL,
-    this.currency,
+    required this.uid,
+    required this.name,
+    required this.email,
+    required this.budget,
+    required this.photoURL,
+    required this.currency,
   });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
-  factory User.fromFirebaseUser(FirebaseUser user) => (user != null)
-      ? User(
-          uid: user.uid,
-          name: user.displayName ?? '',
-          email: user.email ?? '',
-          budget: null,
-          photoURL: user.photoUrl ?? '',
-          currency: null,
-        )
-      : null;
+  factory User.fromFirebaseUser(auth.User? user) {
+    if (user == null) {
+      throw Exception('User cannot be null');
+    }
+    // This creates a partial user - budget and currency should be set later
+    return User(
+      uid: user.uid,
+      name: user.displayName ?? '',
+      email: user.email ?? '',
+      budget: 0.0,
+      photoURL: user.photoURL ?? '',
+      currency: Currency(id: 'usd', name: 'US Dollar', symbol: '\$'),
+    );
+  }
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-        'uid': this.uid,
-        'name': this.name,
-        'email': this.email,
-        'budget': this.budget,
-        'photoURL': this.photoURL,
-        'currency': this.currency?.toJson(),
+        'uid': uid,
+        'name': name,
+        'email': email,
+        'budget': budget,
+        'photoURL': photoURL,
+        'currency': currency.toJson(),
       };
 }

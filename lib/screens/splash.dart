@@ -100,7 +100,7 @@ class _SplashScreenState extends State<SplashScreen>
     return Scaffold(
       key: _scaffoldKey,
       body: Container(
-        color: Theme.of(context).accentColor,
+        color: Theme.of(context).colorScheme.secondary,
         child: Center(
           child: ThriftyLogo(
             size: 100,

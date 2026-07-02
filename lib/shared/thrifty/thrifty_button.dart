@@ -6,7 +6,7 @@ class ThriftyButton extends StatefulWidget {
 
   const ThriftyButton({
     Key key,
-    @required this.title,
+    this.title,
     this.onPressed,
   }) : super(key: key);
 
@@ -20,11 +20,11 @@ class _ThriftyButtonState extends State<ThriftyButton> {
     return Container(
       width: double.infinity,
       height: 50,
-      child: FlatButton(
+      child: TextButton(
         onPressed: this.widget.onPressed,
         padding: const EdgeInsets.symmetric(horizontal: 30),
-        color: Theme.of(context).accentColor,
-        disabledColor: Theme.of(context).accentColor.withOpacity(0.5),
+        color: Theme.of(context).colorScheme.secondary,
+        disabledColor: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[

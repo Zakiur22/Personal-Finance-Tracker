@@ -3,8 +3,8 @@ class Language {
   final String title;
 
   Language({
-    this.code,
-    this.title,
+    required this.code,
+    required this.title,
   });
 }
 

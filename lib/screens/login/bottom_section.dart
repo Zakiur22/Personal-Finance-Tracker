@@ -4,11 +4,12 @@ import 'package:bethriftytoday/services/services.dart';
 import 'package:flutter/material.dart';
 
 class BottomSection extends StatefulWidget {
-  const BottomSection({Key key}) : super(key: key);
+  const BottomSection({super.key});
 
   @override
   _BottomSectionState createState() => _BottomSectionState();
 }
+
 
 class _BottomSectionState extends State<BottomSection> {
   AuthService _authService = AuthService();
@@ -33,10 +34,10 @@ class _BottomSectionState extends State<BottomSection> {
         Spacer(flex: 2),
         Container(
           width: MediaQuery.of(context).size.width * 0.8,
-          child: FlatButton.icon(
+          child: TextButton.icon(
             onPressed: () => signIn(false),
-            textColor: Theme.of(context).accentColor,
-            padding: const EdgeInsets.symmetric(vertical: 15),
+            style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.secondary, padding: const EdgeInsets.symmetric(vertical: 15)),
+            
             icon: Image.asset(
               'assets/images/google_icon.png',
               width: 28,
@@ -51,9 +52,9 @@ class _BottomSectionState extends State<BottomSection> {
         SizedBox(height: 15),
         Container(
           width: MediaQuery.of(context).size.width * 0.8,
-          child: FlatButton(
+          child: TextButton(
             onPressed: () => signIn(true),
-            padding: const EdgeInsets.symmetric(vertical: 15),
+            
             child: Text(
               S.of(context).loginButtonTextGuest,
               style: TextStyle(fontSize: 16),
@@ -78,7 +79,6 @@ class _BottomSectionState extends State<BottomSection> {
       }
     } catch (e) {
       print(e.toString());
-      return null;
     }
   }
 }

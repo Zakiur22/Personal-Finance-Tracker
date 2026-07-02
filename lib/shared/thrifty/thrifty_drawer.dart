@@ -8,7 +8,7 @@ import 'package:bethriftytoday/services/services.dart';
 import 'package:bethriftytoday/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ThriftyDrawer extends StatelessWidget {
@@ -70,7 +70,7 @@ class ThriftyDrawer extends StatelessWidget {
                       context: context,
                       applicationIcon: ThriftyLogo(
                         size: 80,
-                        color: Theme.of(context).accentColor,
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
                       applicationName: S.of(context).appName,
                       applicationLegalese:
@@ -157,7 +157,7 @@ class DrawerHeader extends StatelessWidget {
       child: Container(
         width: double.infinity,
         height: 180,
-        color: Theme.of(context).accentColor,
+        color: Theme.of(context).colorScheme.secondary,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[

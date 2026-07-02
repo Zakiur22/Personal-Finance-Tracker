@@ -35,7 +35,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
             )
           ],
           bottom: TabBar(
-            indicatorColor: Theme.of(context).accentColor,
+            indicatorColor: Theme.of(context).colorScheme.secondary,
             tabs: <Widget>[
               Tab(
                 child: Text(S.of(context).categoriesScreenTabBarTextIncome),
@@ -91,7 +91,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   }
 
   resetCategories(CategoryProvider categoryProvider) {
-    _scaffoldKey.currentState.showSnackBar(SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(
         S.of(context).categoriesScreenSnackbarTextResetCategoriesConfirmation,
       ),
@@ -101,7 +101,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           onPressed: () async {
             await categoryProvider.reset();
 
-            _scaffoldKey.currentState.showSnackBar(SnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               duration: Duration(seconds: 2),
               content: Text(
                 S
@@ -113,7 +113,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
     ));
   }
 
-  Widget buildAddButton(Function onTap) {
+  Widget buildAddButton(VoidCallback onTap) {
     return InkWell(
       onTap: onTap,
       child: Container(

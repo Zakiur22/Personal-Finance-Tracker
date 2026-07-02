@@ -7,7 +7,7 @@ class TransactionTypeSelector extends StatelessWidget {
 
   const TransactionTypeSelector({
     Key key,
-    @required this.title,
+    this.title,
     this.isSelected = false,
     this.onPressed,
   }) : super(key: key);
@@ -23,10 +23,10 @@ class TransactionTypeSelector extends StatelessWidget {
           height: double.infinity,
           decoration: BoxDecoration(
             color:
-                isSelected ? Theme.of(context).accentColor : Colors.transparent,
+                isSelected ? Theme.of(context).colorScheme.secondary : Colors.transparent,
             border: Border.all(
               width: 2,
-              color: Theme.of(context).accentColor,
+              color: Theme.of(context).colorScheme.secondary,
             ),
           ),
           child: Center(
@@ -35,7 +35,7 @@ class TransactionTypeSelector extends StatelessWidget {
               style: TextStyle(
                 fontSize: 15,
                 color:
-                    isSelected ? Colors.white : Theme.of(context).accentColor,
+                    isSelected ? Colors.white : Theme.of(context).colorScheme.secondary,
                 fontWeight: FontWeight.bold,
               ),
             ),

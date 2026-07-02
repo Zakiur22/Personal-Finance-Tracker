@@ -73,7 +73,7 @@ class _UpdateBudgetDialogState extends State<UpdateBudgetDialog> {
                   ),
                 ),
                 FlatButton.icon(
-                  textColor: Theme.of(context).accentColor,
+                  textColor: Theme.of(context).colorScheme.secondary,
                   onPressed: () {
                     if (_budgetController.text.isEmpty) return;
                     UserDatabaseService(user).updateUserBudget(

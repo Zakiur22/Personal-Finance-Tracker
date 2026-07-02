@@ -168,7 +168,7 @@ class _AddCategoryDialogState extends State<AddCategoryDialog> {
                   ));
                   Navigator.pop(context);
                 },
-                textColor: Theme.of(context).accentColor,
+                textColor: Theme.of(context).colorScheme.secondary,
                 icon: Icon(Icons.check),
                 label: Text(
                   S.of(context).addCategoryBottomSheetButtonTextAdd,
@@ -191,7 +191,7 @@ class CategoryIcon extends StatelessWidget {
     Key key,
     this.onTap,
     this.isSelected = false,
-    @required this.icon,
+    this.icon,
   }) : super(key: key);
 
   @override

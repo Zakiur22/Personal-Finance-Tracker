@@ -7,7 +7,7 @@ class ThriftyLogo extends StatelessWidget {
 
   const ThriftyLogo({
     Key key,
-    @required this.size,
+    this.size,
     this.color = Colors.white,
   }) : super(key: key);
 

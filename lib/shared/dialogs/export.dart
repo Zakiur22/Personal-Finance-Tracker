@@ -138,7 +138,7 @@ class _ExportDialogState extends State<ExportDialog> {
                       await launch(downloadLink);
                   },
                   padding: const EdgeInsets.symmetric(vertical: 15),
-                  textColor: Theme.of(context).accentColor,
+                  textColor: Theme.of(context).colorScheme.secondary,
                   icon: Icon(Icons.cloud_download),
                   label: Text(
                     S.of(context).exportBottomSheetButtonTextDownload,

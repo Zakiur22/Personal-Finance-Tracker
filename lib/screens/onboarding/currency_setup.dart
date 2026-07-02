@@ -28,7 +28,7 @@ class _CurrencySetupScreenState extends State<CurrencySetupScreen> {
               Icon(
                 Icons.attach_money,
                 size: 42,
-                color: Theme.of(context).accentColor,
+                color: Theme.of(context).colorScheme.secondary,
               ),
               SizedBox(height: 15),
               Text(
@@ -96,7 +96,7 @@ class CurrencyCircle extends StatelessWidget {
     return FloatingActionButton(
       elevation: 0,
       heroTag: currency.name,
-      backgroundColor: Theme.of(context).accentColor,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       foregroundColor: Colors.white,
       onPressed: this.onPressed,
       child: Text(

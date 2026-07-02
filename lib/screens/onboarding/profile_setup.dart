@@ -45,7 +45,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen>
           Icon(
             Icons.person,
             size: 42,
-            color: Theme.of(context).accentColor,
+            color: Theme.of(context).colorScheme.secondary,
           ),
           SizedBox(height: 10),
           Text(

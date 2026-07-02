@@ -100,7 +100,7 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
   }
 
   resetCurrencies(CurrencyProvider currencyProvider) {
-    _scaffoldKey.currentState.showSnackBar(SnackBar(
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(
         S.of(context).currenciesScreenSnackbarTextResetCurrenciesConfirmation,
       ),
@@ -110,7 +110,7 @@ class _CurrenciesScreenState extends State<CurrenciesScreen> {
           onPressed: () async {
             await currencyProvider.reset();
 
-            _scaffoldKey.currentState.showSnackBar(SnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               duration: Duration(seconds: 2),
               content: Text(
                 S

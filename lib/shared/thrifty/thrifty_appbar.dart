@@ -33,20 +33,20 @@ class _ThriftyAppBarState extends State<ThriftyAppBar> {
                   onPressed: () {
                     Navigator.pop(context);
                   },
-                  color: Theme.of(context).accentColor,
+                  color: Theme.of(context).colorScheme.secondary,
                   icon: Icon(Icons.arrow_back_ios),
                 )
               : IconButton(
                   onPressed: () {
                     Scaffold.of(context).openDrawer();
                   },
-                  color: Theme.of(context).accentColor,
+                  color: Theme.of(context).colorScheme.secondary,
                   icon: Icon(Icons.menu),
                 ),
           SizedBox(width: 10),
           ThriftyLogo(
             size: 80,
-            color: Theme.of(context).accentColor,
+            color: Theme.of(context).colorScheme.secondary,
           ),
           Spacer(),
           widget.hideAccount ? Container() : buildCircleAvatar(user),

@@ -6,7 +6,7 @@ class TopSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        color: Theme.of(context).accentColor,
+        color: Theme.of(context).colorScheme.secondary,
         child: Stack(
           children: <Widget>[
             Positioned(

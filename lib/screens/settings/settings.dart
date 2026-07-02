@@ -64,7 +64,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return ListTile(
       leading: Icon(
         Icons.person,
-        color: Theme.of(context).accentColor,
+        color: Theme.of(context).colorScheme.secondary,
       ),
       title: Text(
         S.of(context).settingsScreenSettingTitleName,
@@ -96,7 +96,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       enabled: false,
       leading: Icon(
         Icons.mail,
-        color: Theme.of(context).accentColor,
+        color: Theme.of(context).colorScheme.secondary,
       ),
       title: Text(
         S.of(context).settingsScreenSettingTitleEmailAddress,
@@ -118,7 +118,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return ListTile(
       leading: Icon(
         Icons.monetization_on,
-        color: Theme.of(context).accentColor,
+        color: Theme.of(context).colorScheme.secondary,
       ),
       title: Text(
         S.of(context).settingsScreenSettingTitleCurrency,
@@ -154,7 +154,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       child: Text(
         title.toUpperCase(),
         style: TextStyle(
-          color: Theme.of(context).accentColor,
+          color: Theme.of(context).colorScheme.secondary,
           fontWeight: FontWeight.w700,
         ),
       ),
@@ -181,13 +181,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: Text(S.of(context).deleteAccountDialogTitle),
             content: Text(S.of(context).deleteAccountDialogContent),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
                 child: Text(S.of(context).deleteAccountDialogButtonTextCancel),
               ),
-              FlatButton(
+              TextButton(
                 onPressed: () async {
                   Navigator.pop(context);
                   try {
@@ -228,7 +228,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             enabled: enabled,
             leading: Icon(
               Icons.fingerprint,
-              color: Theme.of(context).accentColor,
+              color: Theme.of(context).colorScheme.secondary,
             ),
             title: Text(
               S.of(context).settingsScreenSettingTitleBiometric,
@@ -241,7 +241,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             trailing: Switch(
               value: settings.biometricsEnabled,
-              activeColor: Theme.of(context).accentColor,
+              activeColor: Theme.of(context).colorScheme.secondary,
               onChanged: enabled
                   ? (value) {
                       settings.setBiometricsEnabled(value);
@@ -263,7 +263,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return ListTile(
       leading: Icon(
         Icons.brightness_medium,
-        color: Theme.of(context).accentColor,
+        color: Theme.of(context).colorScheme.secondary,
       ),
       title: Text(
         S.of(context).settingsScreenSettingTitleTheme,
@@ -296,7 +296,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return ListTile(
       leading: Icon(
         Icons.language,
-        color: Theme.of(context).accentColor,
+        color: Theme.of(context).colorScheme.secondary,
       ),
       title: Text(
         S.of(context).settingsScreenSettingTitleLanguage,
@@ -332,7 +332,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return ListTile(
       leading: Icon(
         Icons.color_lens,
-        color: Theme.of(context).accentColor,
+        color: Theme.of(context).colorScheme.secondary,
       ),
       title: Text(
         S.of(context).settingsScreenSettingTitleAccentColor,

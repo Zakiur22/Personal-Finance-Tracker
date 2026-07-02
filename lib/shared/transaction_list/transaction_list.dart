@@ -9,8 +9,8 @@ class TransactionList extends StatefulWidget {
 
   const TransactionList({
     Key key,
-    @required this.date,
-    @required this.grouped,
+    this.date,
+    this.grouped,
   }) : super(key: key);
 
   @override
