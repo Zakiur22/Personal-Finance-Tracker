@@ -49,7 +49,7 @@ class ExportRepositoryImpl implements ExportRepository {
       ]);
     }
 
-    final csvContent = const Csv().encode(rows);
+    final csvContent = Csv().encode(rows);
 
     final directory = await getTemporaryDirectory();
     final file = File(
