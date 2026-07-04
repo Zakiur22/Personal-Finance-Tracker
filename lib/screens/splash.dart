@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     int theme = prefs.getInt('theme') ?? 0;
     String appLang = prefs.getString('appLang') ?? 'en';
-    int color = prefs.getInt('accentColor') ?? thriftyBlue.value;
+    int color = prefs.getInt('accentColor') ?? thriftyBlue.toARGB32();
     bool biometricsEnabled = prefs.getBool('biometricsEnabled') ?? false;
 
     settings.setAccentColor(Color(color));

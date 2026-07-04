@@ -24,7 +24,7 @@ class _ThriftyButtonState extends State<ThriftyButton> {
         onPressed: this.widget.onPressed,
         style: TextButton.styleFrom(
           backgroundColor: Theme.of(context).colorScheme.secondary,
-          disabledBackgroundColor: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
+          disabledBackgroundColor: Theme.of(context).colorScheme.secondary.withValues(alpha: 0.5),
            
         ),
         

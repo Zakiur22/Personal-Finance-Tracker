@@ -12,8 +12,9 @@ class AuthService {
     'https://www.googleapis.com/auth/userinfo.profile',
   ]);
 
-  Future<models.User> get getUser async {
+  Future<models.User?> get getUser async {
     final firebaseUser = _auth.currentUser;
+    if (firebaseUser == null) return null;
     return models.User.fromFirebaseUser(firebaseUser);
   }
 

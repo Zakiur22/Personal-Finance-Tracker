@@ -31,68 +31,64 @@ class _UpdateBudgetDialogState extends State<UpdateBudgetDialog> {
   Widget build(BuildContext context) {
     var user = Provider.of<User>(context);
 
-    if (user != null) {
-      return Container(
-        margin: EdgeInsets.only(
-          bottom: MediaQuery.of(context).viewInsets.bottom,
-        ),
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text(
-              S.of(context).updateBudgetBottomSheetHeadingText,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                height: 1.5,
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
+    return Container(
+      margin: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+      ),
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Text(
+            S.of(context).updateBudgetBottomSheetHeadingText,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              height: 1.5,
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
             ),
-            SizedBox(height: 20),
-            TextField(
-              controller: _budgetController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: S.of(context).updateBudgetBottomSheetLabelTextBudget,
-              ),
+          ),
+          SizedBox(height: 20),
+          TextField(
+            controller: _budgetController,
+            keyboardType: TextInputType.number,
+            decoration: InputDecoration(
+              labelText: S.of(context).updateBudgetBottomSheetLabelTextBudget,
             ),
-            SizedBox(height: 10),
-            Wrap(
-              alignment: WrapAlignment.center,
-              children: <Widget>[
-                TextButton.icon(
-                  onPressed: () {
-                    UserDatabaseService(user).updateUserBudget(0.0);
-                    Navigator.pop(context);
-                  },
-                  style: TextButton.styleFrom(foregroundColor: Colors.red),
-                  icon: Icon(Icons.clear),
-                  label: Text(
-                    S.of(context).updateBudgetBottomSheetButtonTextClear,
-                  ),
+          ),
+          SizedBox(height: 10),
+          Wrap(
+            alignment: WrapAlignment.center,
+            children: <Widget>[
+              TextButton.icon(
+                onPressed: () {
+                  UserDatabaseService(user).updateUserBudget(0.0);
+                  Navigator.pop(context);
+                },
+                style: TextButton.styleFrom(foregroundColor: Colors.red),
+                icon: Icon(Icons.clear),
+                label: Text(
+                  S.of(context).updateBudgetBottomSheetButtonTextClear,
                 ),
-                TextButton.icon(
-                  style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.secondary),
-                  onPressed: () {
-                    if (_budgetController.text.isEmpty) return;
-                    UserDatabaseService(user).updateUserBudget(
-                      double.parse(_budgetController.text),
-                    );
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(Icons.check),
-                  label: Text(
-                    S.of(context).updateBudgetBottomSheetButtonTextSetBudget,
-                  ),
+              ),
+              TextButton.icon(
+                style: TextButton.styleFrom(foregroundColor: Theme.of(context).colorScheme.secondary),
+                onPressed: () {
+                  if (_budgetController.text.isEmpty) return;
+                  UserDatabaseService(user).updateUserBudget(
+                    double.parse(_budgetController.text),
+                  );
+                  Navigator.pop(context);
+                },
+                icon: Icon(Icons.check),
+                label: Text(
+                  S.of(context).updateBudgetBottomSheetButtonTextSetBudget,
                 ),
-              ],
-            ),
-          ],
-        ),
-      );
-    }
-
-    return Container();
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }

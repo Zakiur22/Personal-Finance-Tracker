@@ -18,7 +18,7 @@ class SettingsProvider extends ChangeNotifier {
 
   setAccentColor(Color color) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setInt('accentColor', color.value);
+    await prefs.setInt('accentColor', color.toARGB32());
     accentColor = color;
     notifyListeners();
   }

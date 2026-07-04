@@ -97,7 +97,7 @@ class _ExportDialogState extends State<ExportDialog> {
                 ),
           SizedBox(height: 20),
           DropdownButtonFormField(
-            value: format,
+            initialValue: format,
             onChanged: (v) {
               setState(() => format = v ?? "csv");
             },

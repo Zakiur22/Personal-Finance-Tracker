@@ -56,7 +56,7 @@ class CurrencyGridView extends StatelessWidget {
     var user = Provider.of<User>(context);
     var currencyProvider = Provider.of<CurrencyProvider>(context);
 
-    if (currencyProvider.currencies != null) {
+    if (currencyProvider.currencies.isNotEmpty) {
       return GridView.count(
         crossAxisCount: 3,
         childAspectRatio: 2,

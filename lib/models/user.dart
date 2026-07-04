@@ -39,12 +39,5 @@ class User {
     );
   }
 
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        'uid': uid,
-        'name': name,
-        'email': email,
-        'budget': budget,
-        'photoURL': photoURL,
-        'currency': currency.toJson(),
-      };
+  Map<String, dynamic> toJson() => _$UserToJson(this);
 }

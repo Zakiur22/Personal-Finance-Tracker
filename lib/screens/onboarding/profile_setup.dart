@@ -28,7 +28,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen>
       _nameController.text = user.name;
       _emailController.text = user.email;
 
-      if (user.email == null || user.email.isEmpty)
+      if (user.email.isEmpty)
         setState(() => this.isGuest = true);
     });
   }
