@@ -1,4 +1,4 @@
-import 'package:thrifty/shared/shared.dart';
+import 'package:personal_finance_tracker/shared/shared.dart';
 import 'package:flutter/material.dart';
 
 class TopSection extends StatelessWidget {

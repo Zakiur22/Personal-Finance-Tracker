@@ -1,6 +1,6 @@
-<img src="https://github.com/AmruthPillai/BeThriftyToday/blob/master/assets/icons/app_icon.png?raw=true" alt="Be Thrifty Today" width="256px" />
+<img src="https://github.com/AmruthPillai/Thrifty/blob/master/assets/icons/app_icon.png?raw=true" alt="Thrifty" width="256px" />
 
-# Be Thrifty Today
+# Thrifty
 
 A simple and secure money manager that keeps you financially vigilant.
 
@@ -14,11 +14,11 @@ A simple and secure money manager that keeps you financially vigilant.
 
 ## Short Description
 
-Be Thrifty Today is a simple and secure money management app that helps you track your incomes and expenses. It is designed in a way that helps you become financially vigilant within seconds of using the app.
+Thrifty is a simple and secure money management app that helps you track your incomes and expenses. It is designed in a way that helps you become financially vigilant within seconds of using the app.
 
 ## Description
 
-Be Thrifty Today is a simple side project that started out of bare necessities. I have had the habit of keeping an eye on my incomes and expenses for quite some time now, and I’ve used many apps on the market that have aided me for quite some time, but I always found that it fell short in one or more areas. I like to have complete control over my finances and that’s why Be Thrifty Today was born. It is a simple money management application for those who want complete oversight over their incomes and expenses and setting budgets too.
+Thrifty is a simple side project that started out of bare necessities. I have had the habit of keeping an eye on my incomes and expenses for quite some time now, and I’ve used many apps on the market that have aided me for quite some time, but I always found that it fell short in one or more areas. I like to have complete control over my finances and that’s why Thrifty was born. It is a simple money management application for those who want complete oversight over their incomes and expenses and setting budgets too.
 
 Inside the app, you should be able to find a simple to use User Interface that allows you to add new incomes or expenses along with assigning the transaction with a cute and colourful icon to indicate its category. You can delete transactions made by simply swiping from right to left on the list item, and edit them by holding down the transaction. It has been designed in an intuitive way, quick to add, easy to navigate.
 
@@ -126,7 +126,7 @@ Thank you so much for your contribution!
 
 ## License
 
-The source code and product are governed under the Apache License 2.0 which can read here: [LICENSE](https://github.com/AmruthPillai/BeThriftyToday/blob/master/LICENSE). It allows for open source contribution and resharing of work :)
+The source code and product are governed under the Apache License 2.0 which can read here: [LICENSE](https://github.com/AmruthPillai/Thrifty/blob/master/LICENSE). It allows for open source contribution and resharing of work :)
 
 ## Contributing
 

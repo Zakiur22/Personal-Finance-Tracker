@@ -1,7 +1,7 @@
-import 'package:thrifty/config/utils.dart';
-import 'package:thrifty/models/models.dart';
-import 'package:thrifty/services/services.dart';
-import 'package:thrifty/shared/shared.dart';
+import 'package:personal_finance_tracker/config/utils.dart';
+import 'package:personal_finance_tracker/models/models.dart';
+import 'package:personal_finance_tracker/services/services.dart';
+import 'package:personal_finance_tracker/shared/shared.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -1,6 +1,6 @@
-import 'package:thrifty/generated/l10n.dart';
-import 'package:thrifty/screens/screens.dart';
-import 'package:thrifty/services/services.dart';
+import 'package:personal_finance_tracker/generated/l10n.dart';
+import 'package:personal_finance_tracker/screens/screens.dart';
+import 'package:personal_finance_tracker/services/services.dart';
 import 'package:flutter/material.dart';
 
 class BottomSection extends StatefulWidget {

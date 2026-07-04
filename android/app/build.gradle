@@ -51,7 +51,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.zakiur22.thrifty"
+        applicationId "com.zakiur22.personalfinancetracker"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion 36
         multiDexEnabled true

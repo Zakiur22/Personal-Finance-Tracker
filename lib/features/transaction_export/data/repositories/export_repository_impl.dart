@@ -6,7 +6,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:share_plus/share_plus.dart';
 
-import 'package:thrifty/models/models.dart';
+import 'package:personal_finance_tracker/models/models.dart';
 import '../../domain/models/export_format.dart';
 import '../../domain/repositories/export_repository.dart';
 

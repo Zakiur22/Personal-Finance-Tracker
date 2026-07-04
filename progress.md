@@ -1,4 +1,4 @@
-# Project Progress - BeThriftyToday
+# Project Progress - Thrifty
 
 ## Phase 2: Initialization
 - [x] Create project-level `plan.md`
@@ -23,7 +23,7 @@
 - [x] Complete local handover logs in this progress file
 
 ### Handover Logs
-* **July 4, 2026:** Fully audited, debugged, and refactored BeThriftyToday codebase. 
+* **July 4, 2026:** Fully audited, debugged, and refactored Thrifty codebase. 
   - Fixed standard Groovy code operator precedence / casting bug affecting signingConfig in release builds.
   - Successfully upgraded dependencies (pdf, csv, path_provider) to resolve compatibility.
   - Implemented offline Local Transaction Exporter under a strict clean architecture directory structure (`/lib/features/transaction_export`).

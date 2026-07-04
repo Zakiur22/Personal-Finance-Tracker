@@ -1,5 +1,5 @@
-import 'package:thrifty/config/encrypt.dart';
-import 'package:thrifty/models/models.dart';
+import 'package:personal_finance_tracker/config/encrypt.dart';
+import 'package:personal_finance_tracker/models/models.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Transaction {

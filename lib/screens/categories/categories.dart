@@ -1,8 +1,8 @@
-import 'package:thrifty/config/utils.dart';
-import 'package:thrifty/generated/l10n.dart';
-import 'package:thrifty/models/models.dart';
-import 'package:thrifty/services/category.dart';
-import 'package:thrifty/shared/dialogs/add_category.dart';
+import 'package:personal_finance_tracker/config/utils.dart';
+import 'package:personal_finance_tracker/generated/l10n.dart';
+import 'package:personal_finance_tracker/models/models.dart';
+import 'package:personal_finance_tracker/services/category.dart';
+import 'package:personal_finance_tracker/shared/dialogs/add_category.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

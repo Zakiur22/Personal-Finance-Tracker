@@ -1,10 +1,10 @@
-import 'package:thrifty/config/config.dart';
-import 'package:thrifty/generated/l10n.dart';
-import 'package:thrifty/models/models.dart' as models;
-import 'package:thrifty/screens/screens.dart';
-import 'package:thrifty/services/category.dart';
-import 'package:thrifty/services/currency.dart';
-import 'package:thrifty/services/services.dart';
+import 'package:personal_finance_tracker/config/config.dart';
+import 'package:personal_finance_tracker/generated/l10n.dart';
+import 'package:personal_finance_tracker/models/models.dart' as models;
+import 'package:personal_finance_tracker/screens/screens.dart';
+import 'package:personal_finance_tracker/services/category.dart';
+import 'package:personal_finance_tracker/services/currency.dart';
+import 'package:personal_finance_tracker/services/services.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';

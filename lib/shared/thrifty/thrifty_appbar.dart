@@ -1,5 +1,5 @@
-import 'package:thrifty/models/models.dart';
-import 'package:thrifty/shared/shared.dart';
+import 'package:personal_finance_tracker/models/models.dart';
+import 'package:personal_finance_tracker/shared/shared.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';

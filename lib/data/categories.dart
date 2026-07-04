@@ -1,4 +1,4 @@
-import 'package:thrifty/models/models.dart';
+import 'package:personal_finance_tracker/models/models.dart';
 import 'package:flutter/material.dart';
 
 final List<Category> baseIncomeCategories = [

@@ -1,6 +1,6 @@
-import 'package:thrifty/screens/categories/categories.dart';
-import 'package:thrifty/screens/currencies/currencies.dart';
-import 'package:thrifty/screens/screens.dart';
+import 'package:personal_finance_tracker/screens/categories/categories.dart';
+import 'package:personal_finance_tracker/screens/currencies/currencies.dart';
+import 'package:personal_finance_tracker/screens/screens.dart';
 import 'package:flutter/material.dart';
 
 Map<String, Widget Function(BuildContext)> routes = {

@@ -1,4 +1,4 @@
-import 'package:thrifty/config/config.dart';
+import 'package:personal_finance_tracker/config/config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

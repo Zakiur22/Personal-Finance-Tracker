@@ -1,7 +1,7 @@
-import 'package:thrifty/config/config.dart';
-import 'package:thrifty/generated/l10n.dart';
-import 'package:thrifty/models/models.dart';
-import 'package:thrifty/services/category.dart';
+import 'package:personal_finance_tracker/config/config.dart';
+import 'package:personal_finance_tracker/generated/l10n.dart';
+import 'package:personal_finance_tracker/models/models.dart';
+import 'package:personal_finance_tracker/services/category.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

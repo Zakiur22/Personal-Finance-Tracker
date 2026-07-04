@@ -1,6 +1,6 @@
-import 'package:thrifty/models/models.dart';
-import 'package:thrifty/services/currency.dart';
-import 'package:thrifty/services/services.dart';
+import 'package:personal_finance_tracker/models/models.dart';
+import 'package:personal_finance_tracker/services/currency.dart';
+import 'package:personal_finance_tracker/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

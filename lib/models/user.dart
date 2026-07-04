@@ -1,4 +1,4 @@
-import 'package:thrifty/models/models.dart';
+import 'package:personal_finance_tracker/models/models.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:json_annotation/json_annotation.dart';
 

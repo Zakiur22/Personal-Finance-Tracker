@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:thrifty/config/config.dart';
-import 'package:thrifty/screens/screens.dart';
-import 'package:thrifty/shared/shared.dart';
+import 'package:personal_finance_tracker/config/config.dart';
+import 'package:personal_finance_tracker/screens/screens.dart';
+import 'package:personal_finance_tracker/shared/shared.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
