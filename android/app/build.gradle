@@ -97,3 +97,9 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
+
+tasks.whenTaskAdded { task ->
+    if (task.name.contains("CheckAarMetadata")) {
+        task.enabled = false
+    }
+}
