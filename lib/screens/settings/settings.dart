@@ -3,6 +3,7 @@ import 'package:bethriftytoday/data/languages.dart';
 import 'package:bethriftytoday/generated/l10n.dart';
 import 'package:bethriftytoday/models/models.dart';
 import 'package:bethriftytoday/screens/screens.dart';
+import 'package:bethriftytoday/features/transaction_export/presentation/widgets/export_dialog.dart';
 import 'package:bethriftytoday/services/services.dart';
 import 'package:bethriftytoday/shared/shared.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +51,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 buildNameSetting(user),
                 buildEmailSetting(user),
                 buildCurrencySetting(user),
+                buildExportTransactionsSetting(user),
                 Divider(),
                 buildHeader(S.of(context).settingsScreenHeaderTitleDangerZone),
                 buildDeleteAccount()
@@ -139,6 +141,33 @@ class _SettingsScreenState extends State<SettingsScreen> {
           context: context,
           isScrollControlled: true,
           builder: (context) => CurrencySelectionDialog(),
+        );
+      },
+    );
+  }
+
+  ListTile buildExportTransactionsSetting(User user) {
+    return ListTile(
+      leading: Icon(
+        Icons.import_export,
+        color: Theme.of(context).colorScheme.secondary,
+      ),
+      title: const Text(
+        'Export Transactions',
+        style: TextStyle(
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+      trailing: const Icon(
+        Icons.chevron_right,
+        color: Colors.grey,
+      ),
+      onTap: () {
+        showModalBottomSheet(
+          context: context,
+          isScrollControlled: true,
+          backgroundColor: Colors.transparent,
+          builder: (context) => ExportDialog(user: user),
         );
       },
     );
