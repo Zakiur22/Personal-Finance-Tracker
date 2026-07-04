@@ -60,7 +60,7 @@ class _LocalExportDialogState extends State<LocalExportDialog> {
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.onBackground,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -181,7 +181,7 @@ class _LocalExportDialogState extends State<LocalExportDialog> {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: isSelected
-              ? colorScheme.primary.withOpacity(0.08)
+              ? colorScheme.primary.withOpacity(0.08) // ignore: deprecated_member_use
               : Theme.of(context).cardColor,
           border: Border.all(
             color: isSelected ? colorScheme.primary : Colors.grey[300]!,
