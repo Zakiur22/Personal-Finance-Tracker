@@ -13,10 +13,10 @@
 - [x] Commit all fixes with git identity guard (`Zakiur22` / `zakiur22@gmail.com`)
 
 ## Phase 4: Feature Implementation
-- [ ] Implement PDF/CSV transaction exporter feature
-- [ ] Integrate export buttons inside Settings or Transactions screen
-- [ ] Re-run `flutter build apk --release` to verify compilation
-- [ ] Commit features with atomic git commits using identity guard
+- [x] Implement PDF/CSV transaction exporter feature
+- [x] Integrate export buttons inside Settings or Transactions screen
+- [x] Re-run `flutter build apk --release` to verify compilation
+- [x] Commit features with atomic git commits using identity guard
 
 ## Phase 5: Documentation & Handover
 - [ ] Update README with installation, architecture details, and custom screenshots
