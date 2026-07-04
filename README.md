@@ -4,59 +4,7 @@
 A simple, secure, and offline-first money manager that keeps you financially vigilant.
 
 
-<p align="center">
-  <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1200&q=80" alt="Personal Finance Tracker Banner" width="100%" style="border-radius: 8px;" />
-</p>
-
-
-<p align="center">
-  <img src="assets/icons/app_icon.png" alt="Personal Finance Tracker Icon" width="160" />
-</p>
-
-
-<p align="center">
-  <b>Personal Finance Tracker</b> is a privacy-first personal finance dashboard designed to help you regain full control over your money. Built with meticulous attention to detail, high usability, and a beautiful modern user interface, this app works completely air-gapped without requiring intrusive permissions.
-</p>
-
-
----
-
-
-## 📱 Visual Showcase & Screenshots
-
-
-Here is a visual overview of the clean, modern, and high-fidelity interface of Personal Finance Tracker:
-
-
-<p align="center">
-  <img src="https://bethrifty.today/assets/screenshots/1-splash-screen.png" width="23%" alt="Splash Screen" />
-  &nbsp;
-  <img src="https://bethrifty.today/assets/screenshots/2-profile-setup.png" width="23%" alt="Profile Setup" />
-  &nbsp;
-  <img src="https://bethrifty.today/assets/screenshots/3-currency-selection.png" width="23%" alt="Currency Selection" />
-  &nbsp;
-  <img src="https://bethrifty.today/assets/screenshots/4-dashboard.png" width="23%" alt="Dashboard" />
-</p>
-
-<p align="center">
-  <img src="https://bethrifty.today/assets/screenshots/5-drawer.png" width="23%" alt="Menu Drawer" />
-  &nbsp;
-  <img src="https://bethrifty.today/assets/screenshots/6-settings.png" width="23%" alt="Settings Panel" />
-  &nbsp;
-  <img src="https://bethrifty.today/assets/screenshots/7-expense.png" width="23%" alt="Add Expense" />
-  &nbsp;
-  <img src="https://bethrifty.today/assets/screenshots/8-income.png" width="23%" alt="Add Income" />
-</p>
-
-<p align="center">
-  <img src="https://bethrifty.today/assets/screenshots/9-dashboard.png" width="23%" alt="Data Lists" />
-  &nbsp;
-  <img src="https://bethrifty.today/assets/screenshots/10-delete.png" width="23%" alt="Swipe Delete" />
-  &nbsp;
-  <img src="https://bethrifty.today/assets/screenshots/11-dark-mode.png" width="23%" alt="AMOLED Black Theme" />
-  &nbsp;
-  <img src="https://bethrifty.today/assets/screenshots/12-about.png" width="23%" alt="About Panel" />
-</p>
+Personal Finance Tracker is a privacy-first personal finance dashboard designed to help you regain full control over your money. Built with meticulous attention to detail, high usability, and a beautiful modern user interface, this app works completely air-gapped without requiring intrusive permissions.
 
 
 ---
