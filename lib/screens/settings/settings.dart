@@ -3,7 +3,7 @@ import 'package:bethriftytoday/data/languages.dart';
 import 'package:bethriftytoday/generated/l10n.dart';
 import 'package:bethriftytoday/models/models.dart';
 import 'package:bethriftytoday/screens/screens.dart';
-import 'package:bethriftytoday/features/transaction_export/presentation/widgets/export_dialog.dart';
+import 'package:bethriftytoday/features/transaction_export/presentation/widgets/local_export_dialog.dart';
 import 'package:bethriftytoday/services/services.dart';
 import 'package:bethriftytoday/shared/shared.dart';
 import 'package:flutter/material.dart';
@@ -167,7 +167,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           context: context,
           isScrollControlled: true,
           backgroundColor: Colors.transparent,
-          builder: (context) => ExportDialog(user: user),
+          builder: (context) => LocalExportDialog(user: user),
         );
       },
     );

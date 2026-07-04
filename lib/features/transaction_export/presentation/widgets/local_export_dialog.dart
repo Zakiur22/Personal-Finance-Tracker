@@ -5,16 +5,16 @@ import 'package:bethriftytoday/services/services.dart';
 import '../../domain/models/export_format.dart';
 import '../controllers/export_controller.dart';
 
-class ExportDialog extends StatefulWidget {
+class LocalExportDialog extends StatefulWidget {
   final User user;
 
-  const ExportDialog({Key? key, required this.user}) : super(key: key);
+  const LocalExportDialog({Key? key, required this.user}) : super(key: key);
 
   @override
-  State<ExportDialog> createState() => _ExportDialogState();
+  State<LocalExportDialog> createState() => _LocalExportDialogState();
 }
 
-class _ExportDialogState extends State<ExportDialog> {
+class _LocalExportDialogState extends State<LocalExportDialog> {
   ExportFormat _selectedFormat = ExportFormat.pdf;
 
   @override
