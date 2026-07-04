@@ -1,4 +1,4 @@
-import 'package:bethriftytoday/models/models.dart';
+import 'package:thrifty/models/models.dart';
 import 'package:flutter/material.dart' hide Key;
 import 'package:flutter/services.dart';
 import 'package:package_info_plus/package_info_plus.dart';

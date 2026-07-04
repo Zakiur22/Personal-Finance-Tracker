@@ -1,5 +1,5 @@
-import 'package:bethriftytoday/data/categories.dart';
-import 'package:bethriftytoday/models/models.dart';
+import 'package:thrifty/data/categories.dart';
+import 'package:thrifty/models/models.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';

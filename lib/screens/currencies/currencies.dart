@@ -1,7 +1,7 @@
-import 'package:bethriftytoday/generated/l10n.dart';
-import 'package:bethriftytoday/models/models.dart';
-import 'package:bethriftytoday/screens/screens.dart';
-import 'package:bethriftytoday/services/currency.dart';
+import 'package:thrifty/generated/l10n.dart';
+import 'package:thrifty/models/models.dart';
+import 'package:thrifty/screens/screens.dart';
+import 'package:thrifty/services/currency.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

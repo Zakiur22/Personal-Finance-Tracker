@@ -1,10 +1,10 @@
-import 'package:bethriftytoday/config/config.dart';
-import 'package:bethriftytoday/generated/l10n.dart';
-import 'package:bethriftytoday/models/models.dart' as models;
-import 'package:bethriftytoday/screens/screens.dart';
-import 'package:bethriftytoday/services/category.dart';
-import 'package:bethriftytoday/services/currency.dart';
-import 'package:bethriftytoday/services/services.dart';
+import 'package:thrifty/config/config.dart';
+import 'package:thrifty/generated/l10n.dart';
+import 'package:thrifty/models/models.dart' as models;
+import 'package:thrifty/screens/screens.dart';
+import 'package:thrifty/services/category.dart';
+import 'package:thrifty/services/currency.dart';
+import 'package:thrifty/services/services.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';

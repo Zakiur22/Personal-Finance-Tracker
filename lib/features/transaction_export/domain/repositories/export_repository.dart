@@ -1,4 +1,4 @@
-import 'package:bethriftytoday/models/models.dart';
+import 'package:thrifty/models/models.dart';
 import '../models/export_format.dart';
 
 abstract class ExportRepository {

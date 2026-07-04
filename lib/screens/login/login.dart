@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:bethriftytoday/config/config.dart';
-import 'package:bethriftytoday/screens/screens.dart';
-import 'package:bethriftytoday/shared/shared.dart';
+import 'package:thrifty/config/config.dart';
+import 'package:thrifty/screens/screens.dart';
+import 'package:thrifty/shared/shared.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {

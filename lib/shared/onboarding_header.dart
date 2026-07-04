@@ -1,4 +1,4 @@
-import 'package:bethriftytoday/shared/shared.dart';
+import 'package:thrifty/shared/shared.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingHeader extends StatelessWidget {

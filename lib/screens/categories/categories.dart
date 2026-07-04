@@ -1,8 +1,8 @@
-import 'package:bethriftytoday/config/utils.dart';
-import 'package:bethriftytoday/generated/l10n.dart';
-import 'package:bethriftytoday/models/models.dart';
-import 'package:bethriftytoday/services/category.dart';
-import 'package:bethriftytoday/shared/dialogs/add_category.dart';
+import 'package:thrifty/config/utils.dart';
+import 'package:thrifty/generated/l10n.dart';
+import 'package:thrifty/models/models.dart';
+import 'package:thrifty/services/category.dart';
+import 'package:thrifty/shared/dialogs/add_category.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

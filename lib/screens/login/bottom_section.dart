@@ -1,6 +1,6 @@
-import 'package:bethriftytoday/generated/l10n.dart';
-import 'package:bethriftytoday/screens/screens.dart';
-import 'package:bethriftytoday/services/services.dart';
+import 'package:thrifty/generated/l10n.dart';
+import 'package:thrifty/screens/screens.dart';
+import 'package:thrifty/services/services.dart';
 import 'package:flutter/material.dart';
 
 class BottomSection extends StatefulWidget {

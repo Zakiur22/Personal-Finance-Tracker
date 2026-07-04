@@ -51,7 +51,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "today.bethrifty.app"
+        applicationId "com.zakiur22.thrifty"
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion 36
         multiDexEnabled true

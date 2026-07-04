@@ -1,6 +1,6 @@
-import 'package:bethriftytoday/config/config.dart';
-import 'package:bethriftytoday/generated/l10n.dart';
-import 'package:bethriftytoday/models/models.dart';
+import 'package:thrifty/config/config.dart';
+import 'package:thrifty/generated/l10n.dart';
+import 'package:thrifty/models/models.dart';
 import 'package:flutter/material.dart';
 
 class CategorySelector extends StatelessWidget {

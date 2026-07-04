@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:bethriftytoday/models/models.dart';
+import 'package:thrifty/models/models.dart';
 import '../../domain/models/export_format.dart';
 import '../../domain/repositories/export_repository.dart';
 import '../../data/repositories/export_repository_impl.dart';

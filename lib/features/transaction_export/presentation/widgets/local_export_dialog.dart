@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:bethriftytoday/models/models.dart';
-import 'package:bethriftytoday/services/services.dart';
+import 'package:thrifty/models/models.dart';
+import 'package:thrifty/services/services.dart';
 import '../../domain/models/export_format.dart';
 import '../controllers/export_controller.dart';
 

@@ -1,4 +1,4 @@
-import 'package:bethriftytoday/models/models.dart';
+import 'package:thrifty/models/models.dart';
 import 'package:flutter/material.dart';
 
 final List<Currency> baseCurrencies = [

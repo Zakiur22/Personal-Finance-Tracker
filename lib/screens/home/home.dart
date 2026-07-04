@@ -1,7 +1,7 @@
-import 'package:bethriftytoday/config/utils.dart';
-import 'package:bethriftytoday/models/models.dart';
-import 'package:bethriftytoday/services/services.dart';
-import 'package:bethriftytoday/shared/shared.dart';
+import 'package:thrifty/config/utils.dart';
+import 'package:thrifty/models/models.dart';
+import 'package:thrifty/services/services.dart';
+import 'package:thrifty/shared/shared.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
