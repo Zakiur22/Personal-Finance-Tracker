@@ -71,7 +71,11 @@ android {
 
     buildTypes {
         release {
-            signingConfig (signingConfigs.release.storeFile != null) ? signingConfigs.release : signingConfigs.debug
+            if (signingConfigs.release.storeFile != null) {
+                signingConfig signingConfigs.release
+            } else {
+                signingConfig signingConfigs.debug
+            }
         }
 
         debug {
