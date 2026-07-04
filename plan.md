@@ -1,4 +1,4 @@
-# Project Plan - Thrifty
+# Project Plan - Personal Finance Tracker
 
 ## 1. Current State Assessment
 * **Category:** Personal Finance / Budget Tracker
