@@ -5,12 +5,12 @@
 - [x] Create project-level `progress.md`
 
 ## Phase 3: Audit, Debug, & Refactor
-- [ ] Run `flutter pub get`
-- [ ] Run `flutter analyze`
-- [ ] Fix compiler and deprecation warnings
-- [ ] Fix analysis lints and style issues
+- [x] Run `flutter pub get`
+- [x] Run `flutter analyze`
+- [x] Fix compiler and deprecation warnings
+- [x] Fix analysis lints and style issues
 - [ ] Ensure successful release compilation (`flutter build apk --release`)
-- [ ] Commit all fixes with git identity guard (`Zakiur22` / `zakiur22@gmail.com`)
+- [x] Commit all fixes with git identity guard (`Zakiur22` / `zakiur22@gmail.com`)
 
 ## Phase 4: Feature Implementation
 - [ ] Implement PDF/CSV transaction exporter feature
