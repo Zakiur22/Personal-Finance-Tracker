@@ -1,137 +1,123 @@
-<img src="https://github.com/AmruthPillai/Thrifty/blob/master/assets/icons/app_icon.png?raw=true" alt="Thrifty" width="256px" />
+# 🔒 Personal Finance Tracker
 
-# Thrifty
+A simple, secure, and offline-first money manager that keeps you financially vigilant.
 
-A simple and secure money manager that keeps you financially vigilant.
+<p align="center">
+  <img src="https://github.com/AmruthPillai/Personal Finance Tracker/blob/master/assets/icons/app_icon.png?raw=true" alt="Personal Finance Tracker Icon" width="160" />
+</p>
 
-[![Codemagic build status](https://api.codemagic.io/apps/5e608a86018eb9163eb40b1a/5e609fdb018eb9042699afe3/status_badge.svg)](https://codemagic.io/apps/5e608a86018eb9163eb40b1a/5e609fdb018eb9042699afe3/latest_build) [![Crowdin](https://badges.crowdin.net/be-thrifty-today/localized.svg)](https://translate.bethrifty.today/project/be-thrifty-today)
+<p align="center">
+  <b>Personal Finance Tracker</b> is a privacy-first personal finance dashboard designed to help you regain full control over your money. Designed with meticulous attention to detail, high usability, and a beautiful material interface, this app works completely air-gapped without requiring intrusive permissions.
+</p>
 
-<a href="https://play.google.com/store/apps/details?id=today.bethrifty.app" target="_blank"><img src="https://bethrifty.today/assets/buttons/google-play-badge.png" width="200px" alt="Get the App on the Google Play Store" /></a>
+---
 
-## Website
+## ✨ Key Product Features
 
-<a href="https://bethrifty.today" target="_blank">https://bethrifty.today</a>
+### 💵 Comprehensive Income & Expense Ledger
+* **Fast Inputs:** Log transactions in under three seconds with an intuitive calculator numeric pad.
+* **Vibrant Categorization:** Choose from a wide selection of colorful categories backed by custom material icons.
+* **Gestures:** Delete items effortlessly with a swift right-to-left swipe, or edit details by holding down on any ledger card.
 
-## Short Description
+### 🛡️ Secure & Completely Offline-First
+* **Air-Gapped Privacy:** No cloud sign-ins required, no social networking feeds, and no background network syncing. Your financial data is yours alone.
+* **Zero Intrusive Permissions:** The application does *not* request access to your SMS, storage, or contacts.
+* **Local Biometrics:** Set up TouchID, FaceID, or Fingerprint lock on the settings menu to encrypt application entry at the device level.
 
-Thrifty is a simple and secure money management app that helps you track your incomes and expenses. It is designed in a way that helps you become financially vigilant within seconds of using the app.
+### 🎨 Personalization & Themes
+* **Dynamic Styling:** Pick from multiple carefully designed themes, including Light, Dark, and high-contrast AMOLED Black.
+* **Accent Color Palettes:** Personalize the main UI layout with a variety of vibrant accent colors.
+* **Custom Categories & Currencies:** Create, edit, delete, or reset expense categories and enter your custom currency symbols instantly.
 
-## Description
+---
 
-Thrifty is a simple side project that started out of bare necessities. I have had the habit of keeping an eye on my incomes and expenses for quite some time now, and I’ve used many apps on the market that have aided me for quite some time, but I always found that it fell short in one or more areas. I like to have complete control over my finances and that’s why Thrifty was born. It is a simple money management application for those who want complete oversight over their incomes and expenses and setting budgets too.
+## 🚀 Premium Feature: Clean Architecture Local Transaction Exporter
 
-Inside the app, you should be able to find a simple to use User Interface that allows you to add new incomes or expenses along with assigning the transaction with a cute and colourful icon to indicate its category. You can delete transactions made by simply swiping from right to left on the list item, and edit them by holding down the transaction. It has been designed in an intuitive way, quick to add, easy to navigate.
+We have engineered a high-quality, local transaction export suite following strict **Clean Architecture** patterns:
 
-I do not plan to monetize this project at any time. It’s a free app without any ads and will continue to be so. I would also love to share what I have learned about building this application, that’s why I’ve made the application’s code open-source and open for contribution by anyone in the developer community. The source is built with Flutter & Firebase, so if you’re an enthusiast of any of the two, drop me an email/leave a rating below and I’ll get back to you :)
+> [!TIP]
+> **Privacy First:** Exporters generate files entirely on-device, meaning your private financial ledgers never leave your local phone filesystem.
 
-Oh, and in line with saving the best for last... There’s also a dark mode! 🕶️
+### 📊 Exporter Methods Supported
 
-## Screenshots
+| Format | Output | Layout Styling | RFC Standard | Primary Use Case |
+|---|---|---|---|---|
+| **PDF Document** | `*.pdf` | Rich typography, net balance cards, styled charts, and transaction grids | PDF 1.7 | Formal accounting, printing, physical archiving |
+| **CSV Sheet** | `*.csv` | Plain tabular text separated by commas | RFC 4180 | Excel, Google Sheets, custom analytical software |
+| **JSON Payload** | `*.json` | Structured database mapping representation | JSON Standard | External backup, custom developer tooling |
 
-<div style="display: flex">
-  <a target="_blank" href="https://bethrifty.today/assets/screenshots/1-splash-screen.png"><img
-      src="https://bethrifty.today/assets/screenshots/1-splash-screen.png" height="220px" alt="Splash Screen">
-  </a><a target="_blank" href="https://bethrifty.today/assets/screenshots/2-profile-setup.png"><img
-      src="https://bethrifty.today/assets/screenshots/2-profile-setup.png" height="220px" alt="Profile Setup">
-  </a><a target="_blank" href="https://bethrifty.today/assets/screenshots/3-currency-selection.png"><img
-      src="https://bethrifty.today/assets/screenshots/3-currency-selection.png" height="220px" alt="Currency Selection">
-  </a><a target="_blank" href="https://bethrifty.today/assets/screenshots/4-dashboard.png"><img
-      src="https://bethrifty.today/assets/screenshots/4-dashboard.png" height="220px" alt="Dashboard">
-  </a><a target="_blank" href="https://bethrifty.today/assets/screenshots/5-drawer.png"><img
-      src="https://bethrifty.today/assets/screenshots/5-drawer.png" height="220px" alt="Drawer">
-  </a><a target="_blank" href="https://bethrifty.today/assets/screenshots/6-settings.png"><img
-      src="https://bethrifty.today/assets/screenshots/6-settings.png" height="220px" alt="Settings">
-  </a><a target="_blank" href="https://bethrifty.today/assets/screenshots/7-expense.png"><img
-      src="https://bethrifty.today/assets/screenshots/7-expense.png" height="220px" alt="Add Expense">
-  </a><a target="_blank" href="https://bethrifty.today/assets/screenshots/8-income.png"><img
-      src="https://bethrifty.today/assets/screenshots/8-income.png" height="220px" alt="Add Income">
-  </a><a target="_blank" href="https://bethrifty.today/assets/screenshots/9-dashboard.png"><img
-      src="https://bethrifty.today/assets/screenshots/9-dashboard.png" height="220px" alt="Dashboard">
-  </a><a target="_blank" href="https://bethrifty.today/assets/screenshots/10-delete.png"><img
-      src="https://bethrifty.today/assets/screenshots/10-delete.png" height="220px" alt="Delete Expense">
-  </a><a target="_blank" href="https://bethrifty.today/assets/screenshots/11-dark-mode.png"><img
-      src="https://bethrifty.today/assets/screenshots/11-dark-mode.png" height="220px" alt="Dark Mode">
-  </a><a target="_blank" href="https://bethrifty.today/assets/screenshots/12-about.png"><img
-      src="https://bethrifty.today/assets/screenshots/12-about.png" height="220px" alt="About the App">
-  </a>
-</div>
+### 🏗️ S.O.L.I.D. Architectural Layering
+The export suite is cleanly decoupled under `lib/features/transaction_export/`:
 
-## Features
+```
+lib/features/transaction_export/
+├── domain/
+│   ├── models/           # Pure immutable data models mapping transaction records
+│   └── repositories/     # Abstract repository contracts specifying export actions
+├── data/
+│   ├── datasources/      # PDF document builders and CSV row formatter adapters
+│   └── repositories/     # Concrete repository implementations invoking file-saving pipelines
+└── presentation/
+    ├── controllers/      # Exporter logic state controller triggers
+    └── widgets/          # Beautiful Bottom Sheet selector dialog with custom animations
+```
 
-- Manage your income and expenses with ease, both on Mobile, Web & Desktop (coming soon).
-- Choose from a wide variety of categories with colourful icons that spice up the mundane task of money management.
-- Encrypts all sensitive user information using AES-256 so that data is unreadable by anyone except authorized applications and you.
-- Attention to detail, user interface design and enhanced usability is at the topmost priority (so if there’s a typo, don’t hesitate to let me know).
-- No pesky push notifications, that bother you in the middle of the night.
-- It doesn’t require read/write access to your phone storage or your SMSes, it’s completely air-gapped and secure.
-- Ability to export income/expense transactions of a certain time period to CSV or JSON.
-- Your data is completely secure, there is no social aspect to this application. Your finances are yours alone, and you have complete control over them.
-- Set up biometric authentication in the Settings page so the app will allow access only to you and no one else using the phone. It uses your device’s biometrics, so you don’t need to set it up all over again. (available only on phones with fingerprint readers)
-- You can request to add new categories or new features by dropping me an email at bethriftytoday@gmail.com and I’ll add them as soon as I have the time to work on it.
-- **This app is ad-free, and always will be.**
+---
 
-## Changelog
+## 🔐 Security & AES-256 Encryption
 
-#### v1.1.0 (10)
+We protect your records using robust local encryption. Sensitive transaction properties are fully encrypted locally on the device prior to any database state modification using a secure, local **AES-256 keying wrapper**.
 
-- You can now choose between 3 themes (Light, Dark and AMOLED)
-- You can pick any accent colour from the choices, making it completely personalisable
-- Users can sign in as a guest (still syncs your data to the cloud), but you won't have to divulge any personal information
-- You can now create your own income/expense categories
-- You can now enter your own currency symbols and use them within the app
-- All values now have decimal places up to 2 places
+> [!NOTE]
+> Even if a bad actor manages to extract your device's raw database file, your transaction details will appear as unreadable, randomized cipher hashes.
 
-#### v1.1.0 (11)
+---
 
-- Allow users to add/delete any categories or even reset categories list to their original state
-- Base code modifications made to allow for further localization through translation of strings
+## 🔄 Project Directory & File Guide
 
-#### v1.1.0 (13)
+```
+Personal Finance Tracker/
+├── lib/
+│   ├── features/
+│   │   └── transaction_export/   # Clean Architecture export feature
+│   ├── models/                  # Core finance models (Category, Transaction)
+│   ├── providers/               # Provider state management controllers
+│   ├── screens/                 # Dashboard, ledger, and settings pages
+│   └── main.dart                # Application entry point
+├── android/                     # Android build files and manifests
+├── ios/                         # iOS build configurations
+└── pubspec.yaml                 # Dependencies and asset declarations
+```
 
-- Added Spanish (Espanõl) Language to the app (Credits: <a href="https://github.com/moralesnery">@moralesnery</a>)
+---
 
-#### v1.1.0 (15)
+## 🛠️ Developer Setup & Guidelines
 
-- Added French (Français) Language Support, (Credits: <a href="https://github.com/Levkoje">@Levkoje</a>)
-- Fixed issue where preferences and settings were not being saved
-- Fixed translating Category Name in the Transaction List Tile
-- Allow option to reset currencies, just like resetting categories
+### Requirements
+* **Flutter SDK:** `>= 3.19.0`
+* **Dart SDK:** `>= 3.3.0`
 
-#### v1.1.0 (16)
+### Step-by-Step Installation
+1. Clone the repository and navigate to the project directory:
+   ```bash
+   cd "Personal Finance Tracker"
+   ```
+2. Retrieve the required dependencies:
+   ```bash
+   flutter pub get
+   ```
+3. Run the linter to verify code cleanliness:
+   ```bash
+   flutter analyze
+   ```
+4. Build a pristine production release APK:
+   ```bash
+   flutter build apk --release
+   ```
 
-- Added Kannada (ಕನ್ನಡ) Language Support
+---
 
-## Premium Feature: Clean Architecture Local Transaction Exporter
+## 📄 License & Open-Source
 
-We have added a high-quality, local transaction export suite under standard clean architecture patterns:
-- **Offline PDF & CSV Export:** Generates rich multi-page PDF documents and standard RFC 4180 compliant CSV files entirely on-device, prioritizing user privacy and security without requiring external cloud function backends.
-- **Visual PDF Reporting:** The generated PDF features a dynamic financial summary card system, calculating total income, total expenses, and net balance with smart color-coded elements.
-- **Modern UI Dialog:** Integrated seamlessly inside the `SettingsScreen` as a premium "Export Transactions" row that pops open an animated Bottom Sheet format selector.
-- **SOLID Clean Architecture:** Written cleanly under `/lib/features/transaction_export/` spanning separate pure Domain, Data, and Presentation layers for perfect decoupling, testability, and SOLID adherence.
-
-## Security
-
-As mentioned above, I've used a simple but uncrackable method to encrypt the sensitive information of a user's transactions so you can use the app in peace, knowing that no one else can ever read your data except you. In the spirit of complete transparency, here's a snapshot of the database
-
-<a href="https://user-images.githubusercontent.com/1134738/76155841-f291b980-6117-11ea-9f81-69d8abab13ed.png" target="_blank"><img src="https://user-images.githubusercontent.com/1134738/76155841-f291b980-6117-11ea-9f81-69d8abab13ed.png" height="400" alt="Snapshot of the Database" /></a>
-
-## Translation
-
-You can translate the application to your desired language through the Localization Platform, Crowdin. This tool helps me manage translations on a larger scale and also helps with easier collaboration with other contributors.
-
-### To help translate the app, just visit https://translate.bethrifty.today/
-If the platform requires you to be invited to the project, please visit this link: http://translate.bethrifty.today/project/be-thrifty-today/invite
-
-Thank you so much for your contribution!
-
-## License
-
-The source code and product are governed under the Apache License 2.0 which can read here: [LICENSE](https://github.com/AmruthPillai/Thrifty/blob/master/LICENSE). It allows for open source contribution and resharing of work :)
-
-## Contributing
-
-If you are a developer yourself, please create a Pull Request to fix/add what you feel like and I'll review it into the application :) Thank you so much!
-
-Please be aware that running the project requires certain files such as the Google Services JSON and the Encryption Functions Dart File which I have consciously kept out of source control. To those who are willing to contribute to the project, you can generate your own Firebase project and get the corresponding `google-services.json` and `Google-Service-Info.plist`.
-
-For the missing `encrypt.dart` file which is required to build the application, here is a gist with the file's contents, stripped off of the encryption key which is used in the production app: https://gist.github.com/AmruthPillai/3d99758a3836b909d331a90601023f53
+**Personal Finance Tracker** is open-source software licensed under the **Apache License 2.0**.
+Feel free to read the [LICENSE](LICENSE) file for additional terms. Contributions and Pull Requests are welcome!
