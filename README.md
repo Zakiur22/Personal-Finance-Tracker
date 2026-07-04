@@ -101,6 +101,14 @@ Oh, and in line with saving the best for last... There’s also a dark mode! �
 
 - Added Kannada (ಕನ್ನಡ) Language Support
 
+## Premium Feature: Clean Architecture Local Transaction Exporter
+
+We have added a high-quality, local transaction export suite under standard clean architecture patterns:
+- **Offline PDF & CSV Export:** Generates rich multi-page PDF documents and standard RFC 4180 compliant CSV files entirely on-device, prioritizing user privacy and security without requiring external cloud function backends.
+- **Visual PDF Reporting:** The generated PDF features a dynamic financial summary card system, calculating total income, total expenses, and net balance with smart color-coded elements.
+- **Modern UI Dialog:** Integrated seamlessly inside the `SettingsScreen` as a premium "Export Transactions" row that pops open an animated Bottom Sheet format selector.
+- **SOLID Clean Architecture:** Written cleanly under `/lib/features/transaction_export/` spanning separate pure Domain, Data, and Presentation layers for perfect decoupling, testability, and SOLID adherence.
+
 ## Security
 
 As mentioned above, I've used a simple but uncrackable method to encrypt the sensitive information of a user's transactions so you can use the app in peace, knowing that no one else can ever read your data except you. In the spirit of complete transparency, here's a snapshot of the database
