@@ -1,4 +1,4 @@
-# 🔒 Personal Finance Tracker
+# 🔒 Personal Finance Tracker: Offline-First Money Manager
 
 
 A simple, secure, and offline-first money manager that keeps you financially vigilant.
