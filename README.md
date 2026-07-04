@@ -17,38 +17,110 @@ A simple, secure, and offline-first money manager that keeps you financially vig
 ---
 
 
-## ✨ Key Product Features & Usage Guide
+## 🚀 Technical Stack & Architecture
+
+
+This project is built using professional, scalable, and robust development technologies.
+
+
+### 🛠️ Core Technology Stack
+
+* **Framework:** Flutter SDK (`>= 3.19.0`) & Dart (`>= 3.3.0`)
+* **State Management:** Provider State Engine (`provider` package utilizing `MultiProvider` & `ChangeNotifier`)
+* **Local Persistence:** Hive DB (High-performance, lightweight NoSQL key-value store on-device) & `shared_preferences` for key-value application states.
+* **Security & Encryption:** Local AES-256 secure wrapper for encrypting sensitive fields before write operations.
+* **Exporting & Reporting:** Native `pdf` generation engine, `csv` tabular encoders, and `share_plus` for native operating system sharing pipelines.
+* **Biometrics:** `local_auth` package integration for biometric FaceID/TouchID checking.
+
+
+### 🏗️ Architecture & Folder Structure
+
+The application adopts a hybrid **Domain-Driven Design (DDD)** and **Clean Architecture** approach. Features like the Local Exporter are separated into distinct layers to enforce separation of concerns, loose coupling, and high testability:
+
+```
+lib/
+├── features/
+│   └── transaction_export/       # Clean Architecture Export Feature Module
+│       ├── domain/
+│       │   ├── models/           # Pure, immutable business entities
+│       │   └── repositories/     # Abstract interface contracts
+│       ├── data/
+│       │   ├── datasources/      # Concrete PDF/CSV document generator implementations
+│       │   └── repositories/     # Concrete repository adapters saving files
+│       └── presentation/
+│           ├── controllers/      # UI controllers orchestrating business logic and state
+│           └── widgets/          # Responsive Bottom Sheet selectors & UI components
+├── models/                       # Core Legacy Models (Category, Transaction, Account)
+├── providers/                    # Global Provider State Management Controllers
+├── screens/                      # UI Screens (Dashboard, Ledger, Custom Settings)
+└── main.dart                     # Main entrypoint initializing Hive & global providers
+```
+
+
+---
+
+
+## 🛠️ Software Coding & Clean Code Principles
+
+
+To ensure the code is maintainable, readable, and highly scalable, we adhered to industry-leading development principles:
+
+* **S.O.L.I.D. Principles:**
+  * **Single Responsibility (SRP):** Every class has one reason to change. The `PDFExporter` only formats and prints PDF documents, completely separated from state or UI logic.
+  * **Open/Closed (OCP):** New export formats (e.g., XML) can be added simply by extending the base abstract repository contract, without changing existing code.
+  * **Liskov Substitution (LSP):** Base abstract interfaces can be substituted by any concrete sub-class seamlessly.
+  * **Interface Segregation (ISP):** Clients are not forced to depend on interface methods they do not use.
+  * **Dependency Inversion (DIP):** High-level controllers depend on abstract interfaces, not concrete classes. Dependencies are injected at runtime.
+* **DRY (Don't Repeat Yourself):** Reusable numeric calculations, currency formatting utilities, and UI card frames are modularized into shared widgets and utility helpers.
+* **Separation of Concerns:** Business logic is isolated from layout elements. Screens only listen to providers and render widgets; they do not fetch data directly.
+* **Immutable State Management:** Transactions are treated as immutable value objects. Modifying transactions triggers copy-with routines and emits deterministic state signals.
+
+
+---
+
+
+## ✨ Extensive Features & Subfeatures Guide
 
 
 ### 💵 Comprehensive Income & Expense Ledger
 
-* **Fast Inputs:** Log transactions in under three seconds with an intuitive custom numeric calculation pad.
-* **Vibrant Categorization:** Choose from a wide selection of colorful categories backed by custom material icons.
-* **Gestures & Swipe Actions:** Delete items effortlessly with a swift right-to-left swipe, or edit details by holding down on any ledger card.
-* **🔍 How to Access & Use:** 
+* **Fast Inputs & Calculation Pad:** 
+  Log transaction records in under three seconds with an custom built numeric computation pad that supports inline additions or subtractions before submitting.
+* **Vibrant Categorization:** 
+  Choose from a wide, customizable selection of color-coded income and expense categories (such as Housing, Groceries, Shopping, Travel, Entertainment, and Salary) backed by custom material icons.
+* **Gestures & Swipe Actions:** 
+  Delete items effortlessly with a swift right-to-left swipe, or edit details by holding down on any ledger card.
+* **🔍 How to Access & Use:**
   1. On the home dashboard, tap the floating action button (`+`) in the bottom right corner.
-  2. Choose either **Income** or **Expense** tab at the top.
-  3. Enter the transaction amount using the numeric keypad.
+  2. Choose either the **Income** or **Expense** tab at the top.
+  3. Enter the transaction amount using the numeric keypad. If needed, perform quick calculations (e.g., `10 + 15`) directly on the keypad.
   4. Select a category (e.g., Food, Travel, Salary, Entertainment).
-  5. Tap the checkmark icon to save. To delete a transaction, simply swipe left on its card inside the ledger view.
+  5. Select a transaction date (defaults to today).
+  6. Tap the checkmark icon to save. To delete a transaction, simply swipe left on its card inside the ledger view.
 
 
-### 🛡️ Secure & Completely Offline-First
+### 🛡️ Secure & Completely Offline-First Privacy
 
-* **Air-Gapped Privacy:** No cloud sign-ins required, no social networking feeds, and no background network syncing. Your financial data is yours alone.
-* **Zero Intrusive Permissions:** The application does *not* request access to your SMS, storage, or contacts.
-* **Local Biometrics:** Set up TouchID, FaceID, or Fingerprint lock on the settings menu to encrypt application entry at the device level.
-* **🔍 How to Access & Use:** 
-  1. Open the drawer menu by tapping the top-left menu icon or swiping from the left edge.
+* **Air-Gapped Privacy:** 
+  No cloud sign-ins required, no social networking feeds, and no background network syncing. Your financial data is yours alone and stays securely on your device.
+* **Zero Intrusive Permissions:** 
+  The application does *not* request access to your SMS, storage, contacts, or network capabilities.
+* **Local Biometrics:** 
+  Set up TouchID, FaceID, or Fingerprint lock on the settings menu to encrypt application entry at the device level.
+* **🔍 How to Access & Use:**
+  1. Open the drawer menu by tapping the top-left menu icon or swiping from the left edge of the screen.
   2. Navigate to **Settings**.
   3. Toggle **Enable Biometric Lock** to register your fingerprint or face authentication for secure app startup.
 
 
 ### 🎨 Personalization & Themes
 
-* **Dynamic Styling:** Pick from multiple carefully designed themes, including Light, Dark, and high-contrast AMOLED Black.
-* **Accent Color Palettes:** Personalize the main UI layout with a variety of vibrant accent colors.
-* **Custom Categories & Currencies:** Create, edit, delete, or reset expense categories and enter your custom currency symbols instantly.
+* **Dynamic Styling:** 
+  Pick from multiple carefully designed themes, including Light, Dark, and high-contrast AMOLED Black.
+* **Accent Color Palettes:** 
+  Personalize the main UI layout with a variety of vibrant accent colors.
+* **Custom Categories & Currencies:** 
+  Create, edit, delete, or reset expense categories and enter your custom currency symbols instantly.
 * **🔍 How to Access & Use:**
   1. Open **Settings** from the main menu drawer.
   2. Tap on **Theme Options** to toggle between light, dark, and black modes.
@@ -56,84 +128,18 @@ A simple, secure, and offline-first money manager that keeps you financially vig
   4. Tap on **Currency Configurations** to customize currency formatting or specify a custom sign (e.g. `$`, `€`, `£`, `৳`).
 
 
----
-
-
-## 🚀 Premium Feature: Clean Architecture Local Transaction Exporter
-
+### 📊 Premium Feature: Clean Architecture Local Transaction Exporter
 
 We have engineered a high-quality, local transaction export suite following strict **Clean Architecture** patterns:
 
-
-> [!TIP]
-> **Privacy First:** Exporters generate files entirely on-device, meaning your private financial ledgers never leave your local phone filesystem.
-
-
-### 📊 Exporter Methods Supported
-
-| Format | Output | Layout Styling | RFC Standard | Primary Use Case |
-|---|---|---|---|---|
-| **PDF Document** | `*.pdf` | Rich typography, net balance cards, styled charts, and transaction grids | PDF 1.7 | Formal accounting, printing, physical archiving |
-| **CSV Sheet** | `*.csv` | Plain tabular text separated by commas | RFC 4180 | Excel, Google Sheets, custom analytical software |
-| **JSON Payload** | `*.json` | Structured database mapping representation | JSON Standard | External backup, custom developer tooling |
-
-
-### 🔍 How to Access & Use the Exporter:
-1. Tap on the **Settings** item in the navigation drawer.
-2. Under the *Data Management* section, tap **Export Transactions**.
-3. Choose your desired output format (**PDF**, **CSV**, or **JSON**).
-4. Tap **Export Now**. A native sharing and file-saving dialog will appear, allowing you to save the generated file directly to your device storage or share it securely via email or local messaging.
-
-
-### 🏗️ S.O.L.I.D. Architectural Layering
-The export suite is cleanly decoupled under `lib/features/transaction_export/`:
-
-```
-lib/features/transaction_export/
-├── domain/
-│   ├── models/           # Pure immutable data models mapping transaction records
-│   └── repositories/     # Abstract repository contracts specifying export actions
-├── data/
-│   ├── datasources/      # PDF document builders and CSV row formatter adapters
-│   └── repositories/     # Concrete repository implementations invoking file-saving pipelines
-└── presentation/
-    ├── controllers/      # Exporter logic state controller triggers
-    └── widgets/          # Beautiful Bottom Sheet selector dialog with custom animations
-```
-
-
----
-
-
-## 🔐 Security & AES-256 Encryption
-
-
-We protect your records using robust local encryption. Sensitive transaction properties are fully encrypted locally on the device prior to any database state modification using a secure, local **AES-256 keying wrapper**.
-
-
-> [!NOTE]
-> Even if a bad actor manages to extract your device's raw database file, your transaction details will appear as unreadable, randomized cipher hashes.
-
-
----
-
-
-## 🔄 Project Directory & File Guide
-
-
-```
-Personal Finance Tracker/
-├── lib/
-│   ├── features/
-│   │   └── transaction_export/   # Clean Architecture export feature
-│   ├── models/                  # Core finance models (Category, Transaction)
-│   ├── providers/               # Provider state management controllers
-│   ├── screens/                 # Dashboard, ledger, and settings pages
-│   └── main.dart                # Application entry point
-├── android/                     # Android build files and manifests
-├── ios/                         # iOS build configurations
-└── pubspec.yaml                 # Dependencies and asset declarations
-```
+* **PDF Document (`*.pdf`):** Generates multi-page reports complete with rich typography, balance overview cards, custom charts, and tabular transaction lists.
+* **CSV Sheet (`*.csv`):** Standard comma-separated values layout, ideal for Excel, Google Sheets, or advanced accounting tools.
+* **JSON Payload (`*.json`):** Clean database schema representation, perfect for developers wanting to import their data elsewhere.
+* **🔍 How to Access & Use:**
+  1. Tap on the **Settings** item in the navigation drawer.
+  2. Under the *Data Management* section, tap **Export Transactions**.
+  3. Choose your desired output format (**PDF**, **CSV**, or **JSON**).
+  4. Tap **Export Now**. A native sharing and file-saving dialog will appear, allowing you to save the generated file directly to your device storage or share it securely via email or local messaging.
 
 
 ---
@@ -176,11 +182,11 @@ Personal Finance Tracker/
 ## 🙏 Acknowledgements & Attribution
 
 
-We would like to express our sincere gratitude to the original creators and maintainers of the original [AmruthPillai/BeThriftyToday](https://github.com/AmruthPillai/BeThriftyToday) repository, which served as the foundation of this work.
+We would like to express our sincere gratitude to the original creators and maintainers of the [AmruthPillai/BeThriftyToday](https://github.com/AmruthPillai/BeThriftyToday) repository, which served as the foundation of this work.
 
 
 > [!NOTE]
-> This repository represents an **extensive, premium upgrade** from the original codebase. It introduces strict Clean Architecture boundaries, full state management refactoring, upgraded Modern SDK compatibility, and high-fidelity feature extensions such as Local Transaction Exporters and PDF layouts.
+> We have extensively worked on their original codebase, refactored the underlying logic, updated legacy dependencies, resolved complex build and runtime errors, and introduced many advanced modern enhancements. These upgrades include strict Clean Architecture boundaries, full state management overhauls, biometric protection, and high-fidelity features like Local Transaction Exporters (supporting customized PDF, CSV, and JSON outputs) to create a highly optimized, secure, and production-ready portfolio application.
 
 
 ---
